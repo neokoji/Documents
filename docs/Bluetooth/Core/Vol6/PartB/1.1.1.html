@@ -13,7 +13,7 @@
     
     
       
-        <title>1.1.1 Permitted state and role combinations - 書庫</title>
+        <title>1.1.1 取りうるステートとロールの組み合わせ - 書庫</title>
       
     
     
@@ -86,7 +86,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              1.1.1 Permitted state and role combinations
+              1.1.1 取りうるステートとロールの組み合わせ
             
           </span>
         </div>
@@ -31104,7 +31104,7 @@
       
       
       <a href="1.1.1.html" class="md-nav__link md-nav__link--active">
-        1.1.1 Permitted state and role combinations
+        1.1.1 取りうるステートとロールの組み合わせ
       </a>
       
     </li>
@@ -31119,7 +31119,7 @@
   
     <li class="md-nav__item">
       <a href="1.1.2.html" class="md-nav__link">
-        1.1.2 Devices supporting only some states
+        1.1.2 一部のステートのみをサポートするデバイス
       </a>
     </li>
   
@@ -31133,7 +31133,7 @@
   
     <li class="md-nav__item">
       <a href="1.1.html" class="md-nav__link">
-        1.1 Link Layer states
+        1.1 リンクレイヤのステート
       </a>
     </li>
   
@@ -31231,7 +31231,7 @@
   
     <li class="md-nav__item">
       <a href="1.html" class="md-nav__link">
-        1 General description
+        1 概要
       </a>
     </li>
   
@@ -32002,6 +32002,20 @@
     <li class="md-nav__item">
       <a href="4.4.2.html" class="md-nav__link">
         4.4.2 Advertising state
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="4.4.3.4.html" class="md-nav__link">
+        4.4.3.4 Scanning for periodic advertisements
       </a>
     </li>
   
@@ -36503,9 +36517,51 @@
               
                 
 
-  <h1>1.1.1 Permitted state and role combinations</h1>
+  <h1>1.1.1 取りうるステートとロールの組み合わせ</h1>
 
-
+<p>リンクレイヤは、複数のステートマシンのインスタンスを持つことができる。<br />
+複数のステートマシンのインスタンスをサポートする場合、任意のステートとロールの組み合わせを取ることができる。<br />
+特に、リンクレイヤはセントラルとペリフェラルとなるコネクションステートに同時に入ることができる。<br />
+一方、ある 2 つのデバイス間では同時に 2 つ以上のコネクションを持つことはできない。  </p>
+<div class="admonition note"></div>
+<p>ピリオディックアドバタイズ (<a href="4.4.3.4.html">4.4.3.4</a> 参照) のスキャンをサポートするデバイスは、2 つ以上のステートマシンをサポートしなければならない。  </p>
+<p>リンクレイヤは、仕様上許可されているすべてのステートの組み合わせを必ずしもサポートする必要はない。<br />
+しかしながら、<a href="#table-1.1">Table 1.1</a> の「組み合わせ A」の列のステート、または、ステートの組み合わせをサポートする場合、「組み合わせ B」の列のステート、または、ステートの組み合わせをサポートしなければならない。  </p>
+<table>
+<thead>
+<tr>
+<th>組み合わせ A</th>
+<th>組み合わせ B</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>イニシエート + C</td>
+<td>セントラル + C</td>
+</tr>
+<tr>
+<td>セントラル + イニシエート + C</td>
+<td>2 つ以上のペリフェラルを持つセントラル + C</td>
+</tr>
+<tr>
+<td>コネクション可能なアドバタイズ + C</td>
+<td>ペリフェラル + C</td>
+</tr>
+<tr>
+<td>ペリフェラル + コネクション可能なアドバタイズ + C</td>
+<td>2 つ以上のセントラルを持つペリフェラル + C</td>
+</tr>
+</tbody>
+</table>
+<p><a name = "Table-1.1">Table 1.1 サポートするステートの要件</a>  </p>
+<div class="admonition note">
+<ul>
+<li>C: 他の任意のステートの組み合わせ  </li>
+<li>セントラル、ペリフェラルはコネクションステート  </li>
+</ul>
+</div>
+<p>それぞれのケースにおいて、C は空でも良い。<br />
+後ろ 2 の行について、C はコネクション可能なアドバタイズを含んで良い。  </p>
 
               
             </article>
