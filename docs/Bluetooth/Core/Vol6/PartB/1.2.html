@@ -13,7 +13,7 @@
     
     
       
-        <title>1.2 Bit ordering - 書庫</title>
+        <title>1.2 ビット順序 - 書庫</title>
       
     
     
@@ -86,7 +86,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              1.2 Bit ordering
+              1.2 ビット順序
             
           </span>
         </div>
@@ -31146,7 +31146,7 @@
       
       
       <a href="1.2.html" class="md-nav__link md-nav__link--active">
-        1.2 Bit ordering
+        1.2 ビット順序
       </a>
       
     </li>
@@ -31442,6 +31442,20 @@
     <li class="md-nav__item">
       <a href="2.3.2.html" class="md-nav__link">
         2.3.2 Scanning PDUs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="2.3.3.1.html" class="md-nav__link">
+        2.3.3.1 CONNECT_IND and AUX_CONNECT_REQ
       </a>
     </li>
   
@@ -36517,9 +36531,27 @@
               
                 
 
-  <h1>1.2 Bit ordering</h1>
+  <h1>1.2 ビット順序</h1>
 
-
+<p>リンクレイヤの仕様において、パケットや、PDU (Protocol Data Unit) 内のフィールドを定義する際のビット順序は、リトルエンディアンとする。<br />
+以下のルールを適用する。  </p>
+<ul>
+<li>LSB (the Least Significant Bit) を b<sub>0</sub> と表す。</li>
+<li>LSB が最初に無線送信される。</li>
+<li>図中では、LSB を左側に記述する。</li>
+</ul>
+<p>さらに、リンクレイヤで定義される PDU ヘッダのようなデータフィールドは、LSB から送信される。<br />
+例えば、3 ビットのパラメータ X = 3 は、<br />
+b<sub>0</sub>b<sub>1</sub>b<sub>2</sub> = 110<br />
+の順に送信される。<br />
+無線としては、1 が最初に送信され、次いで 1 が送信され、最後に 0 が送信される。<br />
+これを仕様上では 110 と表記する。  </p>
+<p>0b10101010 のようなフォーマットに従って仕様書上で示される 2 進数のフィールド  (ex. <a href="2.1.2.html">2.1.2</a> のアドバタイズ物理チャンネルのアクセスアドレス) は、MSB (the Most Significant Bit) を最も左に記述する。  </p>
+<p>CRC (Cyclic Redundancy Check) と MIC (Message Integrity Check) を除き、複数オクテットで構成されるフィールドは、最下位オクテットから送信される。<br />
+CRC (<a href="3.1.1.html">3.1.1</a>) を除き、複数オクテットで構成されるフィールドの各オクテットは、LSB を最初に送信する。<br />
+例えば、アドバタイズ物理チャンネル PDU に含まれる 48 ビットのアドレスは最下位オクテットが最初に送信され、残りの 5 オクテットが昇順に送信される。  </p>
+<p>仕様書では、複数オクテットから成るフィールド (ex. <a href="2.3.3.1.html">2.3.3.1</a> の CRC 初期値) は、最上位オクテットを左側に記述する。<br />
+例えば、0x112233445566 では、 0x11 が最上位オクテットである。  </p>
 
               
             </article>
