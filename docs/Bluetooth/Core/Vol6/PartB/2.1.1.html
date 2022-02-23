@@ -13,7 +13,7 @@
     
     
       
-        <title>2.1.1 Preamble - 書庫</title>
+        <title>2.1.1 プレアンブル - 書庫</title>
       
     
     
@@ -86,7 +86,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              2.1.1 Preamble
+              2.1.1 プレアンブル
             
           </span>
         </div>
@@ -31237,7 +31237,7 @@
   
     <li class="md-nav__item">
       <a href="1.4.1.html" class="md-nav__link">
-        1.4.1 Physical channel indices
+        1.4.1 物理チャンネルのインデックス
       </a>
     </li>
   
@@ -31251,7 +31251,7 @@
   
     <li class="md-nav__item">
       <a href="1.4.html" class="md-nav__link">
-        1.4 Physical channel
+        1.4 物理チャンネル
       </a>
     </li>
   
@@ -31286,7 +31286,7 @@
       
       
       <a href="2.1.1.html" class="md-nav__link md-nav__link--active">
-        2.1.1 Preamble
+        2.1.1 プレアンブル
       </a>
       
     </li>
@@ -31357,7 +31357,7 @@
   
     <li class="md-nav__item">
       <a href="2.1.html" class="md-nav__link">
-        2.1 Packet format for the LE Uncoded PHYs
+        2.1 LE Uncoded PHY のパケットフォーマット
       </a>
     </li>
   
@@ -31721,7 +31721,7 @@
   
     <li class="md-nav__item">
       <a href="2.html" class="md-nav__link">
-        2 Air interface packets
+        2 無線通信されるパケット
       </a>
     </li>
   
@@ -36574,9 +36574,18 @@
                 
 
 
-  <h1>2.1.1 Preamble</h1>
+  <h1>2.1.1 プレアンブル</h1>
 
-
+<p>リンクレイヤの全てのパケットはプレアンブルを持ち、受信側はこれを使って周波数の同期、シンボルタイミングの推測、AGC (Automatic Gain Control) の学習を行う。<br />
+プレアンブルは、0 と 1 が交互に現れる固定のビット列である。<br />
+LE 1M PHY 上で送信されたパケットでは、プレアンブルは 8 ビット、LE 2M PHY では 16 ビットである。<br />
+プレアンブルの (送信順で) 先頭のビットは、アクセスアドレスの LSB と同じでなければならない。<br />
+プレアンブルを <a href="#Fig-2.2">Fig 2.2</a> に示す。  </p>
+<figure>
+    <img src = "./Resources/Fig-2.2.drawio.svg">
+    <figcaption>Fig 2.2: プレアンブル</figcaption>
+</figure>
+<p><a name = "Fig-2.2"></a></p>
 
               
             </article>

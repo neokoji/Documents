@@ -13,7 +13,7 @@
     
     
       
-        <title>2.1 Packet format for the LE Uncoded PHYs - 書庫</title>
+        <title>2.1 LE Uncoded PHY のパケットフォーマット - 書庫</title>
       
     
     
@@ -86,7 +86,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              2.1 Packet format for the LE Uncoded PHYs
+              2.1 LE Uncoded PHY のパケットフォーマット
             
           </span>
         </div>
@@ -31237,7 +31237,7 @@
   
     <li class="md-nav__item">
       <a href="1.4.1.html" class="md-nav__link">
-        1.4.1 Physical channel indices
+        1.4.1 物理チャンネルのインデックス
       </a>
     </li>
   
@@ -31251,7 +31251,7 @@
   
     <li class="md-nav__item">
       <a href="1.4.html" class="md-nav__link">
-        1.4 Physical channel
+        1.4 物理チャンネル
       </a>
     </li>
   
@@ -31279,7 +31279,7 @@
   
     <li class="md-nav__item">
       <a href="2.1.1.html" class="md-nav__link">
-        2.1.1 Preamble
+        2.1.1 プレアンブル
       </a>
     </li>
   
@@ -31356,7 +31356,7 @@
       
       
       <a href="2.1.html" class="md-nav__link md-nav__link--active">
-        2.1 Packet format for the LE Uncoded PHYs
+        2.1 LE Uncoded PHY のパケットフォーマット
       </a>
       
     </li>
@@ -31721,7 +31721,7 @@
   
     <li class="md-nav__item">
       <a href="2.html" class="md-nav__link">
-        2 Air interface packets
+        2 無線通信されるパケット
       </a>
     </li>
   
@@ -36574,9 +36574,26 @@
                 
 
 
-  <h1>2.1 Packet format for the LE Uncoded PHYs</h1>
+  <h1>2.1 LE Uncoded PHY のパケットフォーマット</h1>
 
-
+<p>ここで述べるパケットフォーマットは、LE Uncoded PHY (LE 1M/2M) ように定義されたものであり、すべての物理チャンネル上で使用される。  </p>
+<p>パケットフォーマットを <a href="#Fig-2.1">Fig 2.1</a> に示す。<br />
+パケットは 4 つの必須のフィールドと、1 つのオプションのフィールドから成る。<br />
+必須のフィールドは、プレアンブル (<a href="2.1.1.html">2.1.1</a>)、アクセスアドレス (<a href="2.1.2.html">2.1.2</a>)、PDU (<a href="2.1.3.html">2.1.3</a>)、CRC (<a href="2.1.4.html">2.1.4</a>) である。<br />
+オプションのフィールドは、CTE (Constant Tone Extension, <a href="2.1.5.html">2.1.5</a>) である。  </p>
+<figure>
+    <img src = "./Resources/Fig-2.1.drawio.svg">
+    <figcaption>Fig 2.1: LE Uncode PHY のリンク層のパケットフォーマット</figcaption>
+</figure>
+<p><a name = "Fig-2.1"></a></p>
+<p>プレアンブルは、LE 1M PHY 上では 2 オクテット、LE 2M PHY 上では 2 オクテットである。<br />
+アクセスアドレスは 4 オクテットである。<br />
+PDU は 2 - 258 オクテットである。<br />
+CRC は 3 オクテットである。  </p>
+<p>プレアンブルが最初に送信され、以降順に、アクセスアドレス、PDU、CRC、(あれば) CTE が送信される。<br />
+パケット全体は同じシンボルレート (1 Msym/s または 2Msym/s) で送信される。  </p>
+<p>(CTE を含まない) パケットは、 44 - 2128 us で全体が送信される。  </p>
+<p>CTE が存在する場合、<a href="#Fig-2.1">Fig 2.1</a> に示す通り、CTE の長さは 16 - 160 us である。  </p>
 
               
             </article>
