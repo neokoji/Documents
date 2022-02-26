@@ -9,11 +9,11 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.1">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.2">
     
     
       
-        <title>2.1.2 Access Address - 書庫</title>
+        <title>2.1.2 アクセスアドレス - 書庫</title>
       
     
     
@@ -29,7 +29,7 @@
       
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
         <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
       
     
@@ -86,7 +86,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              2.1.2 Access Address
+              2.1.2 アクセスアドレス
             
           </span>
         </div>
@@ -31300,7 +31300,7 @@
       
       
       <a href="2.1.2.html" class="md-nav__link md-nav__link--active">
-        2.1.2 Access Address
+        2.1.2 アクセスアドレス
       </a>
       
     </li>
@@ -31524,6 +31524,20 @@
   
   
     <li class="md-nav__item">
+      <a href="2.3.4.6.html" class="md-nav__link">
+        2.3.4.6 SyncInfo field
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="2.3.4.html" class="md-nav__link">
         2.3.4 Common Extended Advertising Payload Format
       </a>
@@ -31554,6 +31568,20 @@
     <li class="md-nav__item">
       <a href="2.4.1.html" class="md-nav__link">
         2.4.1 LL Data PDU
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="2.4.2.31.html" class="md-nav__link">
+        2.4.2.31 LL_CIS_IND
       </a>
     </li>
   
@@ -32114,6 +32142,20 @@
     <li class="md-nav__item">
       <a href="4.4.5.html" class="md-nav__link">
         4.4.5 Synchronization state
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="4.4.6.7.html" class="md-nav__link">
+        4.4.6.7 Control subevents
       </a>
     </li>
   
@@ -36574,9 +36616,64 @@
                 
 
 
-  <h1>2.1.2 Access Address</h1>
+  <h1>2.1.2 アクセスアドレス</h1>
 
+<p>AUX_SYNC_IND PDU と、それに続く全ての AUX_CHAIN_IND PDU は、アクセスアドレス (AA, Access Address) を、ピリオディックアドバタイズ列であることを示す AUX_ADV_IND PDU の SyncInfo フィールド (<a href="2.3.4.6.html">2.3.4.6</a> 参照) と同じ値にセットしなければならない。  </p>
+<p>それ以外のアドバタイズ物理チャンネル上のパケットは、アクセスアドレスとして 0b10001110_10001001_10111110_11010110 (0x8E89BED6) を使用しなければならない。  </p>
+<p>アクセスアドレスは、2 つのデバイス間のリンクレイヤのコネクションごと、BIS ごと、ピリオディックアドバタイズ列ごとに異なる値を使用する想定である。  </p>
+<p>イニシエートステートにあるリンクレイヤは、送信するイニシエート PDU ごとに新しいアクセスアドレスを生成しなければならない (<a href="2.3.3.1.html">2.3.3.1</a> 参照)。  </p>
+<p>アドバタイズステートにあるリンクレイヤは、ピリオディックアドバタイズ列を有効化する度に新しいアクセスアドレスを生成しなければならない。<br />
+生成されたアクセスアドレスは、そのピリオディックアドバタイズ列を参照する PDU の SyncInfo フィールド (<a href="2.3.4.6.html">2.3.4.6</a> 参照) に含めて送信される。  </p>
+<p>セントラルとしてコネクションステートにあるリンクレイヤは、CIS (Connected Isochronous Stream) を作成する度に新しいアクセスアドレスを生成しなければならない。<br />
+生成されたアドレスは、CIS の作成に使用されるリンクレイヤコントロール PDU (<a href="2.4.2.31.html">2.4.2.31</a> 参照) に含めて送信される。  </p>
+<p>アクセスアドレスは 32　ビットである。<br />
+(BIS (Broadcast Isochronous Stream) を除き) 新しいアクセスアドレスが必要になる度に、リンクレイヤは新しいランダムな値を生成しなければならない。  </p>
+<p>アクセスアドレスは、以下の要件を満たさなければならない。  </p>
+<ul>
+<li>デバイス上に存在する ACL コネクション、または、CIS のアクセスアドレスと重複してはならない。  </li>
+<li>有効化されているピリオディックアドバタイズ列のアクセスアドレスと重複してはならない。  </li>
+<li>デバイス上に存在する BIS のアクセスアドレスと重複してはならない。  </li>
+<li>デバイス上に存在する BIG コントロール論理リンクのアクセスアドレスと重複してはならない。  </li>
+<li>新しい CIS のためのアクセスアドレスである場合、デバイス上で使用されている他のすべてのアクセスアドレスと 2 ビット以上異なっていなければならない。  </li>
+<li>6 個以上 0 または 1 が連続してはならない。  </li>
+<li>アドバタイズ物理チャンネルのアクセスアドレス (0x8E89BED6) と重複してはならない。  </li>
+<li>アドバタイズ物理チャンネルのアクセスアドレス (0x8E89BED6) と 1 ビットだけ異なる値であってはならない。  </li>
+<li>4 つのオクテットが全て同じであってはならない。  </li>
+<li>25 回以上、0・1 の変化があってはならない。  </li>
+<li>上位 6 ビット中で、少なくとも 2 回、0・1 の変化がなくてはならない。  </li>
+</ul>
+<p>アイソクロナスブロードキャストステートにあるリンクレイヤは、BIG ごとに新しい SAA (Seed Access Address) を生成しなければならない。<br />
+その BIG を構成する BIS のアクセスアドレスは、SAA から派生する。<br />
+SAA は、以下の要件を満たす乱数である。  </p>
+<div>
+&emsp;&emsp; SAA<sub>19</sub> = SAA<sub>15</sub><br>
+&emsp;&emsp; SAA<sub>22</sub> = SAA<sub>16</sub> != SAA<sub>15</sub><br>
+&emsp;&emsp; SAA<sub>25</sub> = 0<br>
+&emsp;&emsp; SAA<sub>23</sub> = 1
+</div>
 
+<p>同じデバイスから送信される任意の BIG 同士では、SAA<sub>15-0</sub> のうち少なくとも 2 ビット以上が異なっていなければならない。  </p>
+<p>ある BIG の各 BIS、および、BIG コントロール論理リンク (<a href="4.4.6.7.html">4.4.6.7</a> 参照) のアクセスアドレスは、その BIG の SAA はから派生されなければならない。  </p>
+<p>BIS 論理トランスポートの各アクセスアドレスは、以下の D (Diversifier) から派生した、その論理トランスポートの DW (Diversifier Word) と、SAA をビット単位 XOR 演算した結果と等しくなければならない。  </p>
+<div>
+&emsp;&emsp; D = ((35 * n) + 42) mod 128<br>
+&emsp;&emsp; &emsp; n: BIS の番号、または、BIG コントロール論理リンクであれば 0<br>
+&emsp;&emsp; DW = 0bD<sub>0</sub>D<sub>0</sub>D<sub>0</sub>D<sub>0</sub>D<sub>0</sub>D<sub>0</sub>D<sub>1</sub>D<sub>6</sub>_D<sub>1</sub>0D<sub>5</sub>D<sub>4</sub>D<sub>3</sub>D<sub>2</sub>0_00000000_00000000
+</div>
+
+<p>例えば、n = 1 の場合、</p>
+<div>
+&emsp;&emsp; D = ((35 * 1) + 42) mode 128 = 77 = 0b01001101<br>
+&emsp;&emsp; DW = 0b11111100_00000110_00000000_00000000 = 0xFD060000
+</div>
+<p>となる。  </p>
+<p>乱数生成器のシードは、少なくとも 20 ビット以上の物理的なエントロピーをもとにしなければならない。  </p>
+<p>乱数、及び、SAA の場合には BIS と BIG コントロール論理リンク用に派生したアクセスアドレスが、上記の要件を満たさない場合、要件を満たすまで新しい乱数を生成しなければならない。  </p>
+<p>LE Coded PHY (<a href="2.2.html">2.2</a> 参照) もサポートする場合、アクセスアドレスは以下の要件も満たさなければならない。  </p>
+<ul>
+<li>上位 8 ビットのうち、少なくとも 3 ビットが 1 でなければならない。</li>
+<li>下位 16 ビット中で、11 下位以上 0・1 の変化があってはならない。</li>
+</ul>
 
               
             </article>
@@ -36595,7 +36692,7 @@
     <script id="__config" type="application/json">{"base": "../../../..", "features": [], "translations": {"clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.bd0b6b67.min.js"}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.8aa65030.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.9f3ca3d1.min.js"></script>
       
     
   </body>
