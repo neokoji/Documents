@@ -9,11 +9,11 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.2">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.3">
     
     
       
-        <title>2.2 Packet format for the LE Coded PHY - 書庫</title>
+        <title>2.2 LE Coded PHY のパケットフォーマット - 書庫</title>
       
     
     
@@ -86,7 +86,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              2.2 Packet format for the LE Coded PHY
+              2.2 LE Coded PHY のパケットフォーマット
             
           </span>
         </div>
@@ -31335,7 +31335,7 @@
   
     <li class="md-nav__item">
       <a href="2.1.5.html" class="md-nav__link">
-        2.1.5 Constant Tone Extension
+        2.1.5 CTE (Constant Tone Extension)
       </a>
     </li>
   
@@ -31363,7 +31363,7 @@
   
     <li class="md-nav__item">
       <a href="2.2.1.html" class="md-nav__link">
-        2.2.1 Preamble
+        2.2.1 プレアンブル
       </a>
     </li>
   
@@ -31377,7 +31377,7 @@
   
     <li class="md-nav__item">
       <a href="2.2.2.html" class="md-nav__link">
-        2.2.2 Access Address
+        2.2.2 アクセスアドレス
       </a>
     </li>
   
@@ -31391,7 +31391,7 @@
   
     <li class="md-nav__item">
       <a href="2.2.3.html" class="md-nav__link">
-        2.2.3 Coding Indicator
+        2.2.3 CI (Coding Indicator)
       </a>
     </li>
   
@@ -31433,7 +31433,7 @@
   
     <li class="md-nav__item">
       <a href="2.2.6.html" class="md-nav__link">
-        2.2.6 TERM1 and TERM2
+        2.2.6 TERM1 と TERM2
       </a>
     </li>
   
@@ -31454,7 +31454,7 @@
       
       
       <a href="2.2.html" class="md-nav__link md-nav__link--active">
-        2.2 Packet format for the LE Coded PHY
+        2.2 LE Coded PHY のパケットフォーマット
       </a>
       
     </li>
@@ -36616,9 +36616,79 @@
                 
 
 
-  <h1>2.2 Packet format for the LE Coded PHY</h1>
+  <h1>2.2 LE Coded PHY のパケットフォーマット</h1>
 
-
+<p>ここでは、LE Coded PHY で使用されるパケットのフォーマットを定義する。<br />
+このフォーマットは全ての物理チャンネル上で使用される。<br />
+パケットフォーマットを <a href="#Fig-2.3">Fig 2.3</a> に示す。</p>
+<figure>
+    <img src = "./Resources/Fig-2.3.drawio.svg">
+    <figcaption>Fig 2.3: LE Code PHY のリンク層のパケットフォーマット</figcaption>
+</figure>
+<p><a name = "Fig-2.3"></a></p>
+<p>各パケットは、プレアンブル、FEC ブロック1、FEC ブロック2 から成る。  </p>
+<p>プレアンブルは符号化されない。  </p>
+<p>FEC ブロック1 は、アクセスアドレス、CI (Coding Indicator)、TERM1 の 3 つのフィールドで構成される。<br />
+これらのフィールドでは、<a href="3.3.1.html">3.3.1</a> で定義される S = 8 の符号化方式を使用しなければならない。  </p>
+<p>CI は、FEC ブロック2 で使用する符号化方式を決定する。  </p>
+<p>FEC ブロック2 は、PDU、CRC、TERM2 の 3 つのフィールドで構成される。<br />
+これらのフィールドでは、CI の値に依って、<a href="3.3.html">3.3</a> で定義される S = 2、または、S = 8 の符号化方式を使用しなければならない。  </p>
+<p>パケット全体は 1 Msym/s の変調で送信される。  </p>
+<p><a href="#Table-2.1">Table 2.1</a> にデータパケットフィールドのサイズと送信時間を示す。  </p>
+<p><a name = "Table-2.1">Table 2.1: LE Coded PHY のパケットのフィールドのサイズと送信時間 (us)</a></p>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="center">プレアンブル</th>
+<th align="center">アクセスアドレス</th>
+<th align="center">CI</th>
+<th align="center">TERM1</th>
+<th align="center">PDU</th>
+<th align="center">CRC</th>
+<th align="center">TERM2</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">ビット数</td>
+<td align="center"></td>
+<td align="center">32</td>
+<td align="center">2</td>
+<td align="center">3</td>
+<td align="center">16 - 2056</td>
+<td align="center">24</td>
+<td align="center">3</td>
+</tr>
+<tr>
+<td align="left">送信時間 (us, S = 8)</td>
+<td align="center">80</td>
+<td align="center">256</td>
+<td align="center">16</td>
+<td align="center">24</td>
+<td align="center">128 - 16448</td>
+<td align="center">192</td>
+<td align="center">24</td>
+</tr>
+<tr>
+<td align="left">送信時間 (us, S = 2)</td>
+<td align="center">80</td>
+<td align="center">256</td>
+<td align="center">16</td>
+<td align="center">24</td>
+<td align="center">32 - 4112</td>
+<td align="center">48</td>
+<td align="center">6</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p>符号化部分 (= プレアンブルを除く部分) の送信時間は、n * S [us] (n: ビット数) である。  </p>
+</div>
+<p>パケットの送信には、462 - 17040 us かかる。  </p>
+<div class="admonition note">
+<p>LE Coded PHY 上では、CTE は存在しない。  </p>
+</div>
 
               
             </article>
@@ -36637,7 +36707,7 @@
     <script id="__config" type="application/json">{"base": "../../../..", "features": [], "translations": {"clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.bd0b6b67.min.js"}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.9f3ca3d1.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.b88e97c5.min.js"></script>
       
     
   </body>
