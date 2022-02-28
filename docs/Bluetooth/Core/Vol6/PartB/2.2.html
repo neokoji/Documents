@@ -34,6 +34,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../../StyleSheets/table.css">
+    
     <script>__md_scope=new URL("../../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -36635,53 +36637,55 @@
 これらのフィールドでは、CI の値に依って、<a href="3.3.html">3.3</a> で定義される S = 2、または、S = 8 の符号化方式を使用しなければならない。  </p>
 <p>パケット全体は 1 Msym/s の変調で送信される。  </p>
 <p><a href="#Table-2.1">Table 2.1</a> にデータパケットフィールドのサイズと送信時間を示す。  </p>
-<p><a name = "Table-2.1">Table 2.1: LE Coded PHY のパケットのフィールドのサイズと送信時間 (us)</a></p>
+<p><a name = "Table-2.1"></a></p>
 <table>
-<thead>
-<tr>
-<th align="left"></th>
-<th align="center">プレアンブル</th>
-<th align="center">アクセスアドレス</th>
-<th align="center">CI</th>
-<th align="center">TERM1</th>
-<th align="center">PDU</th>
-<th align="center">CRC</th>
-<th align="center">TERM2</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="left">ビット数</td>
-<td align="center"></td>
-<td align="center">32</td>
-<td align="center">2</td>
-<td align="center">3</td>
-<td align="center">16 - 2056</td>
-<td align="center">24</td>
-<td align="center">3</td>
-</tr>
-<tr>
-<td align="left">送信時間 (us, S = 8)</td>
-<td align="center">80</td>
-<td align="center">256</td>
-<td align="center">16</td>
-<td align="center">24</td>
-<td align="center">128 - 16448</td>
-<td align="center">192</td>
-<td align="center">24</td>
-</tr>
-<tr>
-<td align="left">送信時間 (us, S = 2)</td>
-<td align="center">80</td>
-<td align="center">256</td>
-<td align="center">16</td>
-<td align="center">24</td>
-<td align="center">32 - 4112</td>
-<td align="center">48</td>
-<td align="center">6</td>
-</tr>
-</tbody>
+    <caption>
+        Table 2.1: LE Coded PHY のパケットのフィールドのサイズと送信時間 (us)
+    </caption>
+    <tbody>
+        <tr>
+            <th></th>
+            <th>プレアンブル</th>
+            <th>アクセスアドレス</th>
+            <th>CI</th>
+            <th>TERM1</th>
+            <th>PDU</th>
+            <th>CRC</th>
+            <th>TERM2</th>
+        </tr>
+        <tr>
+            <td>ビット数</td>
+            <td></td>
+            <td style="text-align: center;">32</td>
+            <td style="text-align: center;">2</td>
+            <td style="text-align: center;">3</td>
+            <td style="text-align: center;">16 - 2056</td>
+            <td style="text-align: center;">24</td>
+            <td style="text-align: center;">3</td>
+        </tr>
+        <tr>
+            <td>送信時間 (S = 8) [us]</td>
+            <td style="text-align: center;">80</td>
+            <td style="text-align: center;">256</td>
+            <td style="text-align: center;">16</td>
+            <td style="text-align: center;">24</td>
+            <td style="text-align: center;">128 - 16448</td>
+            <td style="text-align: center;">192</td>
+            <td style="text-align: center;">24</td>
+        </tr>
+        <tr>
+            <td>送信時間 (S = 2) [us]</td>
+            <td style="text-align: center;">80</td>
+            <td style="text-align: center;">256</td>
+            <td style="text-align: center;">16</td>
+            <td style="text-align: center;">24</td>
+            <td style="text-align: center;">32 - 4112</td>
+            <td style="text-align: center;">48</td>
+            <td style="text-align: center;">6</td>
+        </tr>
+    </tbody>
 </table>
+
 <div class="admonition note">
 <p>符号化部分 (= プレアンブルを除く部分) の送信時間は、n * S [us] (n: ビット数) である。  </p>
 </div>

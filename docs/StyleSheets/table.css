@@ -1,0 +1,12 @@
+.md-typeset table:not([class]) th:not([align]){
+    text-align: center;
+    background-color:#87cefa;
+}
+
+.md-typeset table:not([class]) caption{
+    caption-side: bottom
+}
+
+.md-typeset table:not([class]) tr:nth-child(2n){
+    background-color:#d3d3d3;
+}

@@ -34,6 +34,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../../StyleSheets/table.css">
+    
     <script>__md_scope=new URL("../../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -36624,33 +36626,35 @@
 <li>プライベートアドレス</li>
 </ul>
 <p><a href="#Table-1.2">Table 1.2</a> に示すように、ランダムデバイスアドレスの上位 2 ビットがサブタイプを示す。</p>
-<p><a name = "Table-1.2">Table 1.2 ランダムデバイスアドレスのサブタイプ</a></p>
+<p><a name = "Table-1.2"></a></p>
 <table>
-<thead>
-<tr>
-<th>アドレス[47:46]</th>
-<th>サブタイプ</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0b00</td>
-<td>解決不能プライベートアドレス</td>
-</tr>
-<tr>
-<td>0b01</td>
-<td>解決可能プライベートアドレス</td>
-</tr>
-<tr>
-<td>0b10</td>
-<td>RFU</td>
-</tr>
-<tr>
-<td>0b11</td>
-<td>静的デバイスアドレス</td>
-</tr>
-</tbody>
+    <caption>
+        Table 1.2 ランダムデバイスアドレスのサブタイプ
+    </caption>
+    <tbody>
+        <tr>
+            <th>アドレス [47:46]</th>
+            <th>サブタイプ</th>
+        </tr>
+        <tr>
+            <td>0b00</td>
+            <td>解決不能プライベートアドレス</td>
+        </tr>
+        <tr>
+            <td>0b01</td>
+            <td>解決可能プライベートアドレス</td>
+        </tr>
+        <tr>
+            <td>0b10</td>
+            <td>RFU</td>
+        </tr>
+        <tr>
+            <td>0b11</td>
+            <td>静的デバイスアドレス</td>
+        </tr>
+    </tbody>
 </table>
+
 <p>「ランダムデバイスアドレス」という語句は、静的アドレスとプライベートアドレスの両方を指す。  </p>
 <p>ランダムデバイスアドレスの送信はオプションである。<br />
 デバイスはリモートデバイスが送信するランダムデバイスアドレスを受信できなければならない。  </p>

@@ -34,6 +34,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../../StyleSheets/table.css">
+    
     <script>__md_scope=new URL("../../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -36626,33 +36628,35 @@
 <p>ピリオディックアドバタイズ (<a href="4.4.3.4.html">4.4.3.4</a> 参照) のスキャンをサポートするデバイスは、2 つ以上のステートマシンをサポートしなければならない。  </p>
 <p>リンクレイヤは、仕様上許可されているすべてのステートの組み合わせを必ずしもサポートする必要はない。<br />
 しかしながら、<a href="#Table-1.1">Table 1.1</a> の「組み合わせ A」の列のステート、または、ステートの組み合わせをサポートする場合、「組み合わせ B」の列のステート、または、ステートの組み合わせをサポートしなければならない。  </p>
-<p><a name = "Table-1.1">Table 1.1: サポートするステートの要件</a>  </p>
+<p><a name = "Table-1.1"></a>  </p>
 <table>
-<thead>
-<tr>
-<th>組み合わせ A</th>
-<th>組み合わせ B</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>イニシエート + C</td>
-<td>セントラル + C</td>
-</tr>
-<tr>
-<td>セントラル + イニシエート + C</td>
-<td>2 つ以上のペリフェラルを持つセントラル + C</td>
-</tr>
-<tr>
-<td>コネクション可能なアドバタイズ + C</td>
-<td>ペリフェラル + C</td>
-</tr>
-<tr>
-<td>ペリフェラル + コネクション可能なアドバタイズ + C</td>
-<td>2 つ以上のセントラルを持つペリフェラル + C</td>
-</tr>
-</tbody>
+    <caption>
+        Table 1.1: サポートするステートの要件
+    </caption>
+    <tbody>
+        <tr>
+            <td>組み合わせ A</td>
+            <td>組み合わせ B</td>
+        </tr>
+        <tr>
+            <td>イニシエート + C</td>
+            <td>セントラル + C</td>
+        </tr>
+        <tr>
+            <td>セントラル + イニシエート + C</td>
+            <td>2 つ以上のペリフェラルを持つセントラル + C</td>
+        </tr>
+        <tr>
+            <td>コネクション可能なアドバタイズ + C</td>
+            <td>ペリフェラル + C</td>
+        </tr>
+        <tr>
+            <td>ペリフェラル + コネクション可能なアドバタイズ + C</td>
+            <td>2 つ以上のセントラルを持つペリフェラル + C</td>
+        </tr>
+    </tbody>
 </table>
+
 <div class="admonition note">
 <ul>
 <li>C: 他の任意のステートの組み合わせ  </li>

@@ -34,6 +34,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../../StyleSheets/table.css">
+    
     <script>__md_scope=new URL("../../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -36619,28 +36621,29 @@
   <h1>2.2.3 CI (Coding Indicator)</h1>
 
 <p>CI (Coding Indicator) は、<a href="#Table-2.2">Table 2.2</a> で定義する 2 ビットから成る。</p>
-<p><a name = "Table-2.2">Table 2.2: </a></p>
+<p><a name = "Table-2.2"></a></p>
 <table>
-<thead>
-<tr>
-<th>CI</th>
-<th>意味</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>0b00</td>
-<td>FEC ブロック2 では、S = 8 の符号化方式を使用している。</td>
-</tr>
-<tr>
-<td>0b01</td>
-<td>FEC ブロック2 では、S = 2 の符号化方式を使用している。</td>
-</tr>
-<tr>
-<td>上記以外</td>
-<td>RFU</td>
-</tr>
-</tbody>
+    <caption>
+        Table 2.2: CI の定義
+    </caption>
+    <tbody>
+        <tr>
+            <th>CI</th>
+            <th>意味</th>
+        </tr>
+        <tr>
+            <td>0b00</td>
+            <td>FEC ブロック2 では、S = 8 の符号化方式を使用している。</td>
+        </tr>
+        <tr>
+            <td>0b01</td>
+            <td>FEC ブロック2 では、S = 2 の符号化方式を使用している。</td>
+        </tr>
+        <tr>
+            <td>上記以外</td>
+            <td>RFU</td>
+        </tr>
+    </tbody>
 </table>
 
               
