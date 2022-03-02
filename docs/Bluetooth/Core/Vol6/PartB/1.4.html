@@ -9,7 +9,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.3">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.4">
     
     
       
@@ -17,7 +17,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.e8d9bf0c.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.2d9f7617.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.e6a45f82.min.css">
@@ -27,6 +27,7 @@
     
     
       
+        
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
@@ -31470,8 +31471,36 @@
   
   
     <li class="md-nav__item">
+      <a href="2.3.1.1.html" class="md-nav__link">
+        2.3.1.1 ADV_IND
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="2.3.1.2.html" class="md-nav__link">
+        2.3.1.2 ADV_DIRECT_IND
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="2.3.1.html" class="md-nav__link">
-        2.3.1 Advertising PDUs
+        2.3.1 アドバタイズ PDU
       </a>
     </li>
   
@@ -31526,6 +31555,20 @@
   
   
     <li class="md-nav__item">
+      <a href="2.3.4.5.html" class="md-nav__link">
+        2.3.4.5 AuxPtr field
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="2.3.4.6.html" class="md-nav__link">
         2.3.4.6 SyncInfo field
       </a>
@@ -31555,7 +31598,7 @@
   
     <li class="md-nav__item">
       <a href="2.3.html" class="md-nav__link">
-        2.3 Advertising physical channel PDU
+        2.3 アドバタイズ物理チャンネル PDU
       </a>
     </li>
   
@@ -36621,7 +36664,7 @@
   <h1>1.4 物理チャンネル</h1>
 
 <p><a href="../PartA/2.html">Part A, 2</a> で示されているように、2.4 GHz の ISM バンド上位に、40 の RF チャンネルが定義されている。<br />
-これらの RF チャンネルは、イニシャルアドバタイズとすべての古いアドバタイズで使用される「プライマリアドバタイズチャンネル」という 3 チャンネルと、通信の大部分で使用される「汎用チャンネル」という 37 チャンネルに分けられる。<br />
+これらの RF チャンネルは、イニシャルアドバタイズとすべてのレガシーアドバタイズで使用される「プライマリアドバタイズチャンネル」という 3 チャンネルと、通信の大部分で使用される「汎用チャンネル」という 37 チャンネルに分けられる。<br />
 各 RF チャンネルにはユニークなチャンネル番号が割り当てられる。(<a href="1.4.1.html">1.4.1</a> 参照)  </p>
 <p>これらの 2 つの RF チャンネルのグループは、「アドバタイズ」「ピリオディック」「アイソクロナス」「データ」の 4 つの LE 物理チャンネルで使用される。<br />
 アドバタイズ物理チャンネルでは、両方のグループを使って、デバイスの発見、コネクションの開始、および、データのブロードキャストを行う。<br />
@@ -36653,7 +36696,7 @@
     <script id="__config" type="application/json">{"base": "../../../..", "features": [], "translations": {"clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.bd0b6b67.min.js"}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.b88e97c5.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.5413a266.min.js"></script>
       
     
   </body>

@@ -9,15 +9,15 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.3">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.4">
     
     
       
-        <title>2.3 Advertising physical channel PDU - 書庫</title>
+        <title>2.3 アドバタイズ物理チャンネル PDU - 書庫</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.e8d9bf0c.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.2d9f7617.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.e6a45f82.min.css">
@@ -27,6 +27,7 @@
     
     
       
+        
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
@@ -88,7 +89,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              2.3 Advertising physical channel PDU
+              2.3 アドバタイズ物理チャンネル PDU
             
           </span>
         </div>
@@ -31462,8 +31463,36 @@
   
   
     <li class="md-nav__item">
+      <a href="2.3.1.1.html" class="md-nav__link">
+        2.3.1.1 ADV_IND
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="2.3.1.2.html" class="md-nav__link">
+        2.3.1.2 ADV_DIRECT_IND
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="2.3.1.html" class="md-nav__link">
-        2.3.1 Advertising PDUs
+        2.3.1 アドバタイズ PDU
       </a>
     </li>
   
@@ -31518,6 +31547,20 @@
   
   
     <li class="md-nav__item">
+      <a href="2.3.4.5.html" class="md-nav__link">
+        2.3.4.5 AuxPtr field
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="2.3.4.6.html" class="md-nav__link">
         2.3.4.6 SyncInfo field
       </a>
@@ -31554,7 +31597,7 @@
       
       
       <a href="2.3.html" class="md-nav__link md-nav__link--active">
-        2.3 Advertising physical channel PDU
+        2.3 アドバタイズ物理チャンネル PDU
       </a>
       
     </li>
@@ -36618,9 +36661,181 @@
                 
 
 
-  <h1>2.3 Advertising physical channel PDU</h1>
+  <h1>2.3 アドバタイズ物理チャンネル PDU</h1>
 
+<div class="admonition note">
+<p>名前に反して、アドバタイズ物理チャンネル PDU はピリオディック物理チャンネルでも使用される。</p>
+</div>
+<p>アドバタイズ物理チャンネル PDU は、16 ビットのヘッダと可変サイズのペイロードを持つ。<br />
+フォーマットを <a href="#Fig-2.4">Fig 2.4</a> に示す。<br />
+アドバタイズ物理チャンネル PDU の 16 ビットのヘッダのフィールドを、<a href="#Fig-2.5">Fig 2.5</a> に示す。  </p>
+<figure>
+    <img src = "./Resources/Fig-2.4.drawio.svg">
+    <figcaption>Fig 2.4: アドバタイズ物理チャンネル PDU</figcaption>
+</figure>
+<p><a name = "Fig-2.4"></a></p>
+<figure>
+    <img src = "./Resources/Fig-2.5.drawio.svg">
+    <figcaption>Fig 2.5: アドバタイズ物理チャンネル PDU のヘッダ</figcaption>
+</figure>
+<p><a name = "Fig-2.5"></a></p>
+<p>ヘッダに含まれるアドバタイズ物理チャンネル PDU の PDU タイプフィールドは、<a href="#Table-2.3">Table 2.3</a> のように定義される PDU のタイプを示す。<br />
+これは同時に、そのパケットがどのチャンネル、どの PHY で現れうるかも表している。  </p>
+<p><a name = "Table-2.3"></a></p>
+<table>
+    <caption>
+        Table 2.3: アドバタイズ物理チャンネル PDU のヘッダの PDU タイプフィールドの解釈
+    </caption>
+    <tbody>
+        <tr>
+            <th rowspan="2">PDU タイプ</th>
+            <th rowspan="2">PDU 名</th>
+            <th rowspan="2">物理チャンネル</th>
+            <th colspan="3">使用可能な PHY</th>
+        </tr>
+        <tr>
+            <th>LE 1M</th>
+            <th>LE 2M</th>
+            <th>LE Coded</th>
+        </tr>
+        <tr>
+            <td>0b0000</td>
+            <td>ADV_IND</td>
+            <td>プライマリアドバタイズ</td>
+            <td style = "text-align: center;">●</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>0b0001</td>
+            <td>ADV_DIRECT_IND</td>
+            <td>プライマリアドバタイズ</td>
+            <td style = "text-align: center;">●</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>0b0010</td>
+            <td>ADV_NONCONN_IND</td>
+            <td>プライマリアドバタイズ</td>
+            <td style = "text-align: center;">●</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td rowspan="2">0b0011</td>
+            <td>SCAN_REQ</td>
+            <td>プライマリアドバタイズ</td>
+            <td style = "text-align: center;">●</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>AUX_SCAN_REQ</td>
+            <td>セカンダリアドバタイズ</td>
+            <td style = "text-align: center;">●</td>
+            <td style = "text-align: center;">●</td>
+            <td style = "text-align: center;">●</td>
+        </tr>
+        <tr>
+            <td>0b0100</td>
+            <td>SCAN_RSP</td>
+            <td>プライマリアドバタイズ</td>
+            <td style = "text-align: center;">●</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td rowspan="2">0b0101</td>
+            <td>CONNECT_IND</td>
+            <td>プライマリアドバタイズ</td>
+            <td style = "text-align: center;">●</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>AUX_CONNECT_REQ</td>
+            <td>セカンダリアドバタイズ</td>
+            <td style = "text-align: center;">●</td>
+            <td style = "text-align: center;">●</td>
+            <td style = "text-align: center;">●</td>
+        </tr>
+        <tr>
+            <td>0b0110</td>
+            <td>ADV_SCAN_IND</td>
+            <td>プライマリアドバタイズ</td>
+            <td style = "text-align: center;">●</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td rowspan="5">0b0111</td>
+            <td>ADV_EXT_IND</td>
+            <td>プライマリアドバタイズ</td>
+            <td style = "text-align: center;">●</td>
+            <td></td>
+            <td style = "text-align: center;">●</td>
+        </tr>
+        <tr>
+            <td>AUX_ADV_IND</td>
+            <td>セカンダリアドバタイズ</td>
+            <td style = "text-align: center;">●</td>
+            <td style = "text-align: center;">●</td>
+            <td style = "text-align: center;">●</td>
+        </tr>
+        <tr>
+            <td>AUX_SCAN_RSP</td>
+            <td>セカンダリアドバタイズ</td>
+            <td style = "text-align: center;">●</td>
+            <td style = "text-align: center;">●</td>
+            <td style = "text-align: center;">●</td>
+        </tr>
+        <tr>
+            <td>AUX_SYNC_IND</td>
+            <td>ピリオディック</td>
+            <td style = "text-align: center;">●</td>
+            <td style = "text-align: center;">●</td>
+            <td style = "text-align: center;">●</td>
+        </tr>
+        <tr>
+            <td>AUX_CHAIN_IND</td>
+            <td>セカンダリアドバタイズ<br>ピリオディック</td>
+            <td style = "text-align: center;">●</td>
+            <td style = "text-align: center;">●</td>
+            <td style = "text-align: center;">●</td>
+        </tr>
+        <tr>
+            <td>0b1000</td>
+            <td>AUX_CONNECT_RSP</td>
+            <td>セカンダリアドバタイズ</td>
+            <td style = "text-align: center;">●</td>
+            <td style = "text-align: center;">●</td>
+            <td style = "text-align: center;">●</td>
+        </tr>
+        <tr>
+            <td>上記以外</td>
+            <td colspan="5">RFU</td>
+        </tr>
+    </tbody>
+</table>
 
+<p>各 PDU は、<a href="#Table-2.3">Table 2.3</a> 中の「●」がついた PHY 上の、指定された物理チャンネル上でのみ使用される。  </p>
+<p>アドバタイズ物理チャンネル PDU のヘッダに含まれる、ChSel、TxAdd、RxAdd のフィールドは、各アドバタイズ物理チャンネル PDU ごとに定義された PDU タイプ特有の情報を含んでいる。<br />
+ある PDU において、ChSel、TxAdd、または、RxAdd が使用されると定義されていない場合、それらは RFU と見なす。  </p>
+<p>アドバタイズ物理チャンネル PDU のヘッダの Length フィールドは、ペイロードのサイズをオクテット単位で示している。<br />
+Length フィールドの有効な値の範囲は 1 - 255 オクテットである。  </p>
+<p>アドバタイズ物理チャンネル PDU のペイロードフィールドは、PDU タイプごとに特有で、<a href="2.3.1.html">2.3.1</a> から <a href="2.3.4.html">2.3.4</a> で定義されている。<br />
+RFU と定義されている PDU タイプは送信されてはならないし、受信時には無視されなければならない。  </p>
+<p>アドバタイズ物理チャンネル内では、いくつかの PDU タイプにおいて、ホストから与えられたアドバタイズデータ、または、スキャンレスポンスのデータを、ペイロードフィールドに含めることができる。<br />
+このデータのフォーマットは <a href="../../Vol3/PartC/11.html">Vol.3, Part C, 11</a> に定義されている。  </p>
+<p>アドバタイズ物理チャンネル PDU の中には、他のアドバタイズ物理チャンネル PDU を含むパケットを指し示す AuxPtr フィールド (<a href="2.3.4.5.html">2.3.4.5</a> 参照) を含むものがある。<br />
+その場合、2 番目のパケットと PDU を「<em>補助</em>パケット」、及び、「<em>補助</em>PDU」と呼ぶ。<br />
+反対に、元となる PDU を、補助パケット、及び、補助 PDU の「<em>上位</em>パケット」、「<em>上位</em>PDU」と呼ぶ。  </p>
+<div class="admonition note">
+<p>1 つの PDU は補助 PDU を 1 つだけもつことができるが、上位パケットは 2 つ以上持つことができる。  </p>
+</div>
+<p>あるパケットについて、「下位パケットセット」は、そのパケットの補助パケット、及び、補助パケットの下位パケットセットから成る。<br />
+AuxPtr フィールドを持たないパケットは、空の下位パケットセットを持つ。  </p>
 
               
             </article>
@@ -36639,7 +36854,7 @@
     <script id="__config" type="application/json">{"base": "../../../..", "features": [], "translations": {"clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.bd0b6b67.min.js"}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.b88e97c5.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.5413a266.min.js"></script>
       
     
   </body>
