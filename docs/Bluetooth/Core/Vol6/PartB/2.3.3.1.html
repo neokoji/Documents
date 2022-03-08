@@ -9,11 +9,11 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.4">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.2.5">
     
     
       
-        <title>2.3.3.1 CONNECT_IND and AUX_CONNECT_REQ - 書庫</title>
+        <title>2.3.3.1 CONNECT_IND と AUX_CONNECT_REQ - 書庫</title>
       
     
     
@@ -91,7 +91,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              2.3.3.1 CONNECT_IND and AUX_CONNECT_REQ
+              2.3.3.1 CONNECT_IND と AUX_CONNECT_REQ
             
           </span>
         </div>
@@ -31591,8 +31591,50 @@
   
   
     <li class="md-nav__item">
+      <a href="2.3.2.1.html" class="md-nav__link">
+        2.3.2.1 SCAN_REQ と AUX_SCAN_REQ
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="2.3.2.2.html" class="md-nav__link">
+        2.3.2.2 SCAN_RSP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="2.3.2.3.html" class="md-nav__link">
+        2.3.2.3 AUX_SCAN_RSP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="2.3.2.html" class="md-nav__link">
-        2.3.2 Scanning PDUs
+        2.3.2 スキャン PDU
       </a>
     </li>
   
@@ -31613,7 +31655,7 @@
       
       
       <a href="2.3.3.1.html" class="md-nav__link md-nav__link--active">
-        2.3.3.1 CONNECT_IND and AUX_CONNECT_REQ
+        2.3.3.1 CONNECT_IND と AUX_CONNECT_REQ
       </a>
       
     </li>
@@ -31628,7 +31670,7 @@
   
     <li class="md-nav__item">
       <a href="2.3.3.html" class="md-nav__link">
-        2.3.3 Initiating PDUs
+        2.3.3 イニシエート PDU
       </a>
     </li>
   
@@ -32215,6 +32257,20 @@
   
   
     <li class="md-nav__item">
+      <a href="4.4.2.12.html" class="md-nav__link">
+        4.4.2.12 Periodic advertising
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="4.4.2.6.html" class="md-nav__link">
         4.4.2.6 Non-connectable and non-scannable undirected event type
       </a>
@@ -32539,6 +32595,20 @@
     <li class="md-nav__item">
       <a href="4.5.7.html" class="md-nav__link">
         4.5.7 Sleep clock accuracy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="4.5.8.2.html" class="md-nav__link">
+        4.5.8.2 Channel Selection algorithm
       </a>
     </li>
   
@@ -36789,9 +36859,129 @@
                 
 
 
-  <h1>2.3.3.1 CONNECT_IND and AUX_CONNECT_REQ</h1>
+  <h1>2.3.3.1 CONNECT_IND と AUX_CONNECT_REQ</h1>
 
-
+<p>CONNECT_IND、及び、AUX_CONNECT_REQ のペイロードフィールドを <a href="#Fig-2.12">Fig 2.12</a> に示す。  </p>
+<figure>
+    <img src = "./Resources/Fig-2.12.drawio.svg">
+    <figcaption>Fig 2.12: CONNECT_IND PDU と AUX_CONNECT_REQ PDU のペイロード</figcaption>
+</figure>
+<p><a name = "Fig-2.12"></a></p>
+<p>LLData フィールドのフォーマットを <a href="#Fig-2.13">Fig 2.13</a> に示す。</p>
+<figure>
+    <img src = "./Resources/Fig-2.13.drawio.svg">
+    <figcaption>Fig 2.12: CONNECT_IND PDU と AUX_CONNECT_REQ PDU のペイロード</figcaption>
+</figure>
+<p><a name = "Fig-2.13"></a></p>
+<p>アドバタイズ物理チャンネル PDU のヘッダ (<a href="2.3.html">2.3</a>) について、  </p>
+<dl>
+<dt>TxAdd</dt>
+<dd>InitA フィールドに含まれるイニシエータのアドレスの種別を示す。<br />
+TxAdd = 0 ならば、パブリック。<br />
+TxAdd = 1 ならば、ランダム。  </dd>
+<dt>RxAdd</dt>
+<dd>AdvA フィールドに含まれるアドバタイザのアドレスの種別を示す。<br />
+TxAdd = 0 ならば、パブリック。<br />
+TxAdd = 1 ならば、ランダム。  </dd>
+<dt>ChSel</dt>
+<dd>CONNECT_IND では、イニシエータとアドバタイザの両方が、LE チャンネル選択アルゴリズム #2 (<a href="4.5.8.3.html">4.5.8.3</a> 参照) をサポートする場合 1 でなければならない。<br />
+イニシエータが、LE チャンネル選択アルゴリズム #2 をサポートしているが、アドバタイザがサポートしていない場合、イニシエータは ChSel を 0、または、1 にセットしてよい。<br />
+イニシエータが LE チャンネル選択 #2 をサポートしていない場合、このフィールドは 0 にセットされなければならない。<br />
+AUX_CONNECT_REQ では、このフィールド RFU である。</dd>
+</dl>
+<p>ペイロードについて、</p>
+<dl>
+<dt>InitA</dt>
+<dd>TxAdd フィールドが示す通りに、イニシエータのパブリック、または、ランダムアドレスを含まなければならない。</dd>
+<dt>AdvA</dt>
+<dd>RxAdd フィールドが示す通りに、アドバタイザのパブリック、または、ランダムアドレスを含まなければならない。</dd>
+</dl>
+<p>LLData について、</p>
+<dl>
+<dt>AA</dt>
+<dd><a href="2.1.2.html">2.1.2</a> で示されているルールに従って、リンクレイヤが決定した ACL コネクションのアクセスアドレスを含んでいなければならない。</dd>
+<dt>CRCInit</dt>
+<dd><a href="3.1.1.html">3.1.1</a> で定義されている、ACL コネクションの CRC 計算のための初期値を含んでいなければならない。<br />
+この値は、リンクレイヤがランダムに生成したものでなければならない。<br />
+乱数のエントロピーは物理的なもので、20 ビット以上でなければならない。</dd>
+<dt>WinSize</dt>
+<dd><a href="4.5.3.html">4.5.3</a> で定義される <em>transmitWindowSize</em> の元となる値を含んでいなければならない。<br />
+<em>transmitWindowSize</em> = WinSize * 1.25 [ms]</dd>
+<dt>WinOffset</dt>
+<dd><a href="4.5.3.html">4.5.3</a> で定義される <em>transmitWindowOffset</em> の元となる値を含んでいなければならない。<br />
+<em>transmitWindowOffset</em> = WinOffset * 1.25 [ms]</dd>
+<dt>Interval</dt>
+<dd><a href="4.5.1.html">4.5.1</a> で定義される <em>connInterval</em> の元となる値を含んでいなければならない。<br />
+<em>connInterval</em> = Interval * 1.25 [ms]</dd>
+<dt>Latency</dt>
+<dd><a href="4.5.1.html">4.5.1</a> で定義される <em>connPeripheralLatency</em> の元となる値を含んでいなければならない。<br />
+<em>connPeripheralLatency</em> = Latency</dd>
+<dt>Timeout</dt>
+<dd><a href="4.5.2.html">4.5.2</a> で定義される <em>connSupervisionTimeout</em> の元となる値を含んでいなければならない。<br />
+<em>connSupervisionTimeout</em> = Timeout * 10 [ms]</dd>
+<dt>ChM</dt>
+<dd>
+<p><em>Used</em> と <em>Unused</em> を示すチャンネルマップを含んでいなければならない。<br />
+各チャンネルは、<a href="1.4.1.html">1.4.1</a> で定義されるデータチャンネルインデックスごとにビットの位置で表現される。<br />
+LSB が、データチャンネルインデックス 0 を、36 ビット目が、データチャンネル 36 を表す。<br />
+ビットの値が 0 である場合、そのチャンネルは <em>Unused</em> である。<br />
+ビットの値が 1 である場合、そのチャンネルは <em>Used</em> である。<br />
+37、38、39 ビット目は RFU である。</p>
+<div class="admonition note">
+<p>RF チャンネルをデータチャンネルインデックスにマッピングする際は、アドバタイズチャンネルインデックス 38 を配置する場所 (隙間) があることに注意すること。</p>
+</div>
+</dd>
+<dt>Hop</dt>
+<dd><a href="4.5.8.2.html">4.5.8.2</a> で定義される、データチャンネル選択アルゴリズムで使用される <em>hopIncrement</em> の元となる値を含んでいなければならない。
+5 - 16 の乱数でなければならない。</dd>
+<dt>SCA</dt>
+<dd><a href="4.2.2.html">4.2.2</a> で定義される、セントラルの最悪ケースにおけるスリープクロックの精度の計算に使用される <em>centralSCA</em> の元となる値を含んでいなければならない。<br />
+SCA の値の定義を <a href="#Table-2.9">Table 2.9</a> に示す。</dd>
+</dl>
+<p><a name = "Table-2.9"></a></p>
+<table>
+    <caption>
+        Table 2.9: SCA フィールドの解釈
+    </caption>
+    <tbody>
+        <tr>
+            <th>SCA</th>
+            <th>centralSCA</th>
+        </tr>
+        <tr>
+            <td>0</td>
+            <td>251 - 500 ppm</td>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>151 - 250 ppm</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>101 - 150 ppm</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>76 - 100 ppm</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>51 - 75 ppm</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>31 - 50 ppm</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>21 - 30 ppm</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>0 - 20 ppm</td>
+        </tr>
+    </tbody>
+</table>
 
               
             </article>
@@ -36810,7 +37000,7 @@
     <script id="__config" type="application/json">{"base": "../../../..", "features": [], "translations": {"clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}, "search": "../../../../assets/javascripts/workers/search.bd0b6b67.min.js"}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.5413a266.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.467223ff.min.js"></script>
       
     
   </body>
