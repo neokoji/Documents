@@ -13,7 +13,7 @@
     
     
       
-        <title>7.8.35 LE Write Suggested Default Data Length command - 書庫</title>
+        <title>7.8.35 LE Write Suggested Default Data Length コマンド - 書庫</title>
       
     
     
@@ -91,7 +91,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              7.8.35 LE Write Suggested Default Data Length command
+              7.8.35 LE Write Suggested Default Data Length コマンド
             
           </span>
         </div>
@@ -29519,7 +29519,7 @@
   
     <li class="md-nav__item">
       <a href="7.8.33.html" class="md-nav__link">
-        7.8.33 LE Set Data Length command
+        7.8.33 LE Set Data Length コマンド
       </a>
     </li>
   
@@ -29533,7 +29533,7 @@
   
     <li class="md-nav__item">
       <a href="7.8.34.html" class="md-nav__link">
-        7.8.34 LE Read Suggested Default Data Length command
+        7.8.34 LE Read Suggested Default Data Length コマンド
       </a>
     </li>
   
@@ -29554,7 +29554,7 @@
       
       
       <a href="7.8.35.html" class="md-nav__link md-nav__link--active">
-        7.8.35 LE Write Suggested Default Data Length command
+        7.8.35 LE Write Suggested Default Data Length コマンド
       </a>
       
     </li>
@@ -36973,9 +36973,58 @@
                 
 
 
-  <h1>7.8.35 LE Write Suggested Default Data Length command</h1>
+  <h1>7.8.35 LE Write Suggested Default Data Length コマンド</h1>
 
-
+<p>新しいコネクション上で、コントローラが送信するペイロードの最大サイズと、LL データ PDU を含むパケットの送信に掛かる最大時間を指定する。<br />
+コントローラは、ローカルデバイスの状態に応じて、<em>connInitialMaxTxOctets</em> と <em>connInitialMaxTxTime</em> に、指定された値より小さい値、または、大きい値を使用することができる (<a href="../../Vol6/PartB/4.5.10.html">Vol.6, Part B, 4.5.10</a> 参照)。  </p>
+<h2 id="_1">コマンドパラメータ</h2>
+<dl>
+<dt>Suggested_Max_TX_Octets (2 octets)</dt>
+<dd>
+<p>ホストが提案する、新しいコネクション上でコントローラが送信する LL データ PDU に含めるペイロードの最大サイズ (octets)。  </p>
+<table>
+<thead>
+<tr>
+<th>値</th>
+<th>定義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x001B - 0x00FB</td>
+<td>有効な値の範囲。</td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt>Suggested_Max_TX_Time (2 octets)</dt>
+<dd>
+<p>ホストが提案する、新しいコネクション上でコントローラが送信する LL データ PDU を含むパケットの送信に掛かる最大時間 (us)。  </p>
+<table>
+<thead>
+<tr>
+<th>値</th>
+<th>定義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x0148 - 0x4290</td>
+<td>有効な値の範囲。</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+<h2 id="_2">返り値</h2>
+<dl>
+<dt>Status (1 octet)</dt>
+<dd><a href="../../Vol1/PartF/1.html">コマンドの成否</a>。  </dd>
+</dl>
+<h2 id="_3">発生するイベント</h2>
+<ul>
+<li><a href="7.7.14.html">Command Complete</a></li>
+</ul>
 
               
             </article>
