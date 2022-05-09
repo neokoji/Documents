@@ -9,18 +9,18 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.11">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.14">
     
     
       
-        <title>4.5.10 Data PDU length management - 書庫</title>
+        <title>4.5.10 データ PDU のサイズの管理 - 書庫</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.8c5ef100.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.3de6f41f.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
       
     
@@ -91,7 +91,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              4.5.10 Data PDU length management
+              4.5.10 データ PDU のサイズの管理
             
           </span>
         </div>
@@ -28576,6 +28576,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../Vol4/PartE/7.7.65.7.html" class="md-nav__link">
+        7.7.65 LE Data Length Change イベント
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../Vol4/PartE/7.7.65.html" class="md-nav__link">
         7.7.65 LE Meta event
       </a>
@@ -30495,7 +30509,7 @@
   
     <li class="md-nav__item">
       <a href="../../Vol4/PartE/7.8.97.html" class="md-nav__link">
-        7.8.97 LE Set CIG Parameters command
+        7.8.97 LE Set CIG Parameters コマンド
       </a>
     </li>
   
@@ -31815,6 +31829,20 @@
   
   
     <li class="md-nav__item">
+      <a href="2.4.2.21.html" class="md-nav__link">
+        2.4.2.21 LL_LENGTH_REQ と LL_LENGTH_RSP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="2.4.2.27.html" class="md-nav__link">
         2.4.2.27 LL_PERIODIC_SYNC_IND
       </a>
@@ -32523,7 +32551,7 @@
       
       
       <a href="4.5.10.html" class="md-nav__link md-nav__link--active">
-        4.5.10 Data PDU length management
+        4.5.10 データ PDU のサイズの管理
       </a>
       
     </li>
@@ -32567,6 +32595,20 @@
     <li class="md-nav__item">
       <a href="4.5.13.html" class="md-nav__link">
         4.5.13 Connected Isochronous Stream (CIS)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="4.5.14.2.html" class="md-nav__link">
+        4.5.14.2 Arrangement of Multiple CISes
       </a>
     </li>
   
@@ -36973,9 +37015,309 @@
                 
 
 
-  <h1>4.5.10 Data PDU length management</h1>
+  <h1>4.5.10 データ PDU のサイズの管理</h1>
 
+<p>コントローラは、以下のグローバルなパラメータを保持している。  </p>
+<div class="admonition note">
+<p>名前に「Octets」のつくパラメータは、LL データ PDU のペイロードのサイズ (octet) を表す。<br />
+名前に「Time」のつくパラメータは、パケットの送信に掛かる時間 (us) を表す。  </p>
+</div>
+<dl>
+<dt><em>connInitialMaxTxOctets</em></dt>
+<dd>
+<p>コントローラが新しいコネクションで使用する <em>connMaxTxOctets</em> (後述) の値。  </p>
+<div class="admonition hint">
+<p><a href="../../Vol4/PartE/7.8.35.html">LE Write Suggested Default Data Length コマンド</a> でホストから値の提案を受ける。</p>
+</div>
+</dd>
+<dt><em>connInitialMaxTxTime</em></dt>
+<dd>
+<p>コントローラが新しいコネクションで使用する <em>connMaxTxTime</em> (後述)  の値。  </p>
+<div class="admonition hint">
+<p><a href="../../Vol4/PartE/7.8.35.html">LE Write Suggested Default Data Length コマンド</a> でホストから値の提案を受ける。</p>
+</div>
+</dd>
+<dt><em>connInitialMaxTxTimeUncoded</em></dt>
+<dd>コントローラが LE Uncoded PHY 上の新しいコネクションで使用する <em>connMaxTxTime</em> (後述)  の値。<br />
+328 us、及び、<em>connInitialMaxTxTime</em> より大きくなければならない。  </dd>
+<dt><em>connInitialMaxTxTimeCoded</em></dt>
+<dd>
+<p>コントローラが LE Coded PHY 上の新しいコネクションで使用する <em>connMaxTxTime</em> (後述)  の値。<br />
+2704 us、及び、<em>connInitialMaxTxTime</em> より大きくなければならない。  </p>
+<div class="admonition note">
+<p>2704 us という数字は、LE Coded PHY (S = 8) 上で、27 octet のペイロードを含むパケットの送信に掛かる時間。</p>
+</div>
+</dd>
+<dt><em>supportedMaxTxOctets</em></dt>
+<dd>コントローラがサポートしている <em>connMaxTxOctets</em> (後述)  の最大値。  </dd>
+<dt><em>supportedMaxTxTime</em></dt>
+<dd>コントローラがサポートしている <em>connMaxTxTime</em> (後述)  の最大値。  </dd>
+<dt><em>supportedMaxRxOctets</em></dt>
+<dd>コントローラがサポートしている <em>connMaxRxOctets</em> (後述)  の最大値。</dd>
+<dt><em>supportedMaxRxTime</em></dt>
+<dd>コントローラがサポートしている <em>connMaxRxTime</em> (後述)  の最大値。</dd>
+</dl>
+<p>コントローラは、以下のパラメータをコネクションごとに保持している。  </p>
+<dl>
+<dt><em>connMaxTxOctets</em></dt>
+<dd>
+<p>ローカルデバイスがリモートデバイスに送信するペイロードの最大サイズ。  </p>
+<div class="admonition hint">
+<p><a href="../../Vol4/PartE/7.8.33.html">LE Set Data Length コマンド</a> でホストから値の提案を受ける。<br />
+<a href="2.4.2.21.html">LL_LENGTH_REQ と LL_LENGTH_RSP</a> でリモートデバイスに通知する。</p>
+</div>
+</dd>
+<dt><em>connMaxRxOctets</em></dt>
+<dd>
+<p>ローカルデバイスがリモートデバイスから受信可能なペイロードの最大サイズ。  </p>
+<div class="admonition hint">
+<p><a href="2.4.2.21.html">LL_LENGTH_REQ と LL_LENGTH_RSP</a> でリモートデバイスに通知する。</p>
+</div>
+</dd>
+<dt><em>connRemoteMaxTxOctets</em></dt>
+<dd>
+<p>リモートデバイスがローカルデバイスに送信するペイロードの最大サイズ。  </p>
+<div class="admonition hint">
+<p><a href="2.4.2.21.html">LL_LENGTH_REQ と LL_LENGTH_RSP</a> でリモートデバイスから通知される。</p>
+</div>
+</dd>
+<dt><em>connRemoteMaxRxOctets</em></dt>
+<dd>
+<p>リモートデバイスがローカルデバイスから受信可能なペイロードの最大サイズ。  </p>
+<div class="admonition hint">
+<p><a href="2.4.2.21.html">LL_LENGTH_REQ と LL_LENGTH_RSP</a> でリモートデバイスから通知される。</p>
+</div>
+</dd>
+<dt><em>connMaxTxTime</em></dt>
+<dd>
+<p>ローカルデバイスがリモートデバイスにパケットを送信するのに掛けられる最大時間。  </p>
+<div class="admonition hint">
+<p><a href="../../Vol4/PartE/7.8.33.html">LE Set Data Length コマンド</a> でホストから値の提案を受ける。
+<a href="2.4.2.21.html">LL_LENGTH_REQ と LL_LENGTH_RSP</a> でリモートデバイスに通知する。</p>
+</div>
+</dd>
+<dt><em>connMaxRxTime</em></dt>
+<dd>
+<p>ローカルデバイスがリモートデバイスからのパケットを受信するのに掛けられる最大時間。  </p>
+<div class="admonition hint">
+<p><a href="2.4.2.21.html">LL_LENGTH_REQ と LL_LENGTH_RSP</a> でリモートデバイスに通知する。</p>
+</div>
+</dd>
+<dt><em>connRemoteMaxTxTime</em></dt>
+<dd>
+<p>リモートデバイスがローカルデバイスにパケットを送信するのに掛けられる最大時間。  </p>
+<div class="admonition hint">
+<p><a href="2.4.2.21.html">LL_LENGTH_REQ と LL_LENGTH_RSP</a> でリモートデバイスから通知される。</p>
+</div>
+</dd>
+<dt><em>connRemoteMaxRxTime</em></dt>
+<dd>
+<p>リモートデバイスがローカルデバイスからのパケットを受信するのに掛けられる最大時間。  </p>
+<div class="admonition hint">
+<p><a href="2.4.2.21.html">LL_LENGTH_REQ と LL_LENGTH_RSP</a> でリモートデバイスから通知される。</p>
+</div>
+</dd>
+</dl>
+<p>上記のパラメータ (グローバルなパラメータ、及び、コネクションごとのパラメータ) はそれぞれ、<a href="#Table-4.6">Table 4.6</a> の範囲内でなければならない。</p>
+<table>
+    <caption>
+        Table 4.6: データ PDU の管理における値の有効範囲
+    </caption>
+    <tbody>
+        <tr>
+            <th rowspan="2">DPLE</th>
+            <th rowspan="2">LE Coded PHY</th>
+            <th rowspan="2">CTE</th>
+            <th colspan="2">「Octets」の付くパラメータ</th>
+            <th colspan="2">「Time」の付くパラメータ</th>
+        </tr>
+        <tr>
+            <th>Min</th>
+            <th>Max</th>
+            <th>Min</th>
+            <th>Max</th>
+        </tr>
+        <tr>
+            <td>x</td>
+            <td>x</td>
+            <td>x</td>
+            <td>27</td>
+            <td>27</td>
+            <td>328</td>
+            <td>328</td>
+        </tr>
+        <tr>
+            <td>o</td>
+            <td>x</td>
+            <td>x</td>
+            <td>27</td>
+            <td>251</td>
+            <td>328</td>
+            <td>2120</td>
+        </tr>
+        <tr>
+            <td>x</td>
+            <td>x</td>
+            <td>o</td>
+            <td>27</td>
+            <td>27</td>
+            <td>328</td>
+            <td>336</td>
+        </tr>
+        <tr>
+            <td>o</td>
+            <td>x</td>
+            <td>o</td>
+            <td>27</td>
+            <td>251</td>
+            <td>328</td>
+            <td>2128</td>
+        </tr>
+        <tr>
+            <td>x</td>
+            <td>o</td>
+            <td>N/A</td>
+            <td>27</td>
+            <td>27</td>
+            <td>328</td>
+            <td>2704</td>
+        </tr>
+        <tr>
+            <td>o</td>
+            <td>o</td>
+            <td>N/A</td>
+            <td>27</td>
+            <td>251</td>
+            <td>328</td>
+            <td>17040</td>
+        </tr>
+    </tbody>
+</table>
 
+<p>以下の値は、コントローラが保持しているパラメータから派生したものである。  </p>
+<dl>
+<dt><em>connEffectiveMaxTxOctets</em></dt>
+<dd><em>connMaxTxOctets</em> と <em>connRemoteMaxRxOctets</em> の小さい方。</dd>
+<dt><em>connEffectiveMaxRxOctets</em></dt>
+<dd><em>connMaxRxOctets</em> と <em>connRemoteMaxTxOctets</em> の小さい方。</dd>
+<dt><em>connEffectiveMaxTxTimeUncoded</em></dt>
+<dd><em>connMaxTxTime</em> と <em>connRemoteMaxRxTime</em> の小さい方。</dd>
+<dt><em>connIntervalRequired</em></dt>
+<dd>
+<p>(2 x T_IFS) + (<em>connEffectiveMaxRxTime</em> (後述) と (<em>connEffectiveMaxRxOctets</em> x 64 + 976) の小さい方)</p>
+<div class="admonition note">
+<p>976 という数字は、LE Coded PHY (S = 8) 上で 0 octet のペイロードの送受信に掛かる時間。  </p>
+<div class="admonition hint">
+<p>LE Code PHY (S = 8) 上での送信時間は、以下の式で計算できる。(N = PDU サイズ (octet))  </p>
+<p><div>
+&emsp;&emsp; T = 592 + 64 x N
+</div></p>
+<p>T = 976 とすると、N = 6。<br />
+PDU Header: 2 octets、L2CAP Header: 4 octets なので、ペイロードは 0 octet となる。</p>
+</div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">誤植の可能性</p>
+<p>変数の意味からすると、以下が正しい可能性が高い。  </p>
+<p><div>
+&emsp;&emsp; (2 x T_IFS) + (<em>connEffectiveMaxRxTime</em> (後述) と (<em>connEffectiveMaxRxOctets</em> x 64) の小さい方) + 976
+</div></p>
+<div class="admonition hint">
+<p>送受信の間に T_IFS が必要で、かつ、コネクションイベントは次のアンカーポイントの T_IFS 前に閉じなければならないので、(2 x T_IFS)。<br />
+ローカルデバイスが受信に掛かる可能性のある時間は、(<em>connEffectiveMaxRxTime</em> (後述) と (<em>connEffectiveMaxRxOctets</em> x 64) の小さい方)。<br />
+少なくともペイロード 0 のパケットを送信する必要があるので、976 us。</p>
+</div>
+</div>
+</dd>
+<dt><em>connIntervalCodedMin</em></dt>
+<dd>
+<p><em>connIntervalRequired</em> + 2704</p>
+<div class="admonition note">
+<p>2704 という数字は、LE Coded PHY (S = 8) 上で 27 octet のペイロードの送受信に掛かる時間。  </p>
+<div class="admonition hint">
+<p>LE Code PHY (S = 8) 上での送信時間は、以下の式で計算できる。(N = PDU サイズ (octet))  </p>
+<p><div>
+&emsp;&emsp; T = 592 + 64 x N
+</div></p>
+<p>T = 2704 とすると、N = 33。<br />
+PDU Header: 2 octets、L2CAP Header: 4 octets なので、ペイロードは 27 octets となる。</p>
+</div>
+</div>
+</dd>
+<dt><em>connIntervalPortionAvailable</em></dt>
+<dd>
+<p>現在の <em>connInterval</em> - <em>connIntervalRequired</em>。</p>
+<div class="admonition important">
+<p class="admonition-title">誤植の可能性</p>
+<p>変数の意味、及び、これから派生する変数の意味からすると、以下が正しい可能性が高い。  </p>
+<p><div>
+&emsp;&emsp; 現在の <em>connInterval</em> と <em>connIntervalRequired</em> の小さい方。
+</div></p>
+</div>
+</dd>
+<dt><em>connEffectiveMaxTxTimeAvailable</em></dt>
+<dd><em>connEffectiveMaxTxTimeUncoded</em> と <em>connIntervalPortionAvailable</em> の小さい方。</dd>
+<dt><em>connEffectiveMaxTxTimeCoded</em></dt>
+<dd>2704 us と <em>connEffectiveMaxTxTimeAvailable</em> の大きい方。</dd>
+<dt><em>connEffectiveMaxTxTime</em></dt>
+<dd>LE Uncoded PHY 上では、<em>connEffectiveMaxTxTime</em>、LE Coded PHY 上では、<em>connEffectiveMaxTxTimeCoded</em>。</dd>
+<dt><em>connEffectiveMaxRxTimeUncoded</em></dt>
+<dd><em>connMaxRxTime</em> と <em>connRemoteMaxTxTime</em> の小さい方。</dd>
+<dt><em>connEffectiveMaxRxTimeCoded</em></dt>
+<dd>2704 us と <em>connEffectiveMaxRxTimeUncoded</em> の大きい方。</dd>
+<dt><em>connEffectiveMaxRxTime</em></dt>
+<dd>LE Uncoded PHY 上では、<em>connEffectiveMaxRxTimeUncoded</em>、LE Coded PHY 上では、<em>connEffectiveMaxRxTimeCoded</em>。</dd>
+</dl>
+<div class="admonition note">
+<p>対応するサイズに関するパラメータと時間に関するパラメータは、相互に一致している必要はない。<br />
+例えば、ある時間に関するパラメータが 2120 us であることは、取りうる最大値がそれより小さい PHY があるにも関わらず、許可されている。</p>
+</div>
+<p>コントローラは、<em>supportedMaxTxOctets</em>、<em>supportedMaxTxTime</em>、<em>supportedMaxRxOctets</em>、及び、<em>supportedMaxRxTime</em> を変更してはならない。  </p>
+<p>新しいコネクションに関して、</p>
+<ul>
+<li><em>connMaxTxOctets</em> は <em>connInitialMaxTxOctets</em> がセットされ、<em>connMaxRxOctets</em> はコントローラが選択する。<br />
+  どちらも 27 octets でない場合、コントローラは、できるだけ早い機会に <a href="5.1.9.html">データサイズ更新</a> を開始するべきである。  </li>
+<li><em>connRemoteMaxTxOctets</em> と <em>connRemoteMaxRxOctets</em> は 27 octets とする。</li>
+</ul>
+<p>LE Uncoded PHY 上の新しいコネクションに関して、</p>
+<ul>
+<li>connMaxTxTime は <em>connInitialMaxTxTimeUncoded</em> にセットされ、<em>connMaxRxTime</em> はコントローラが選択する。<br />
+  どちらも 328 us でない場合、コントローラは、できるだけ早い機会に <a href="5.1.9.html">データサイズ更新</a> を開始するべきである。  </li>
+<li><em>connRemoteMaxTxTime</em> と <em>connRemoteMaxRxTime</em> は 328 us とする。</li>
+</ul>
+<p>LE Coded PHY 上の新しいコネクションに関して、</p>
+<ul>
+<li>connMaxTxTime は <em>connInitialMaxTxTimeCoded</em> にセットされ、<em>connMaxRxTime</em> はコントローラが選択する。<br />
+  どちらも 2704 us でない場合、コントローラは、できるだけ早い機会に <a href="5.1.9.html">データサイズ更新</a> を開始するべきである。  </li>
+<li><em>connRemoteMaxTxTime</em> と <em>connRemoteMaxRxTime</em> は 2704 us とする。</li>
+</ul>
+<p>コントローラは、コネクションステートに遷移後、任意のタイミングで <em>connMaxTxOctets</em>、<em>connMaxRxOctets</em>、<em>connMaxTxTime</em>、及び、<em>connMaxRxTime</em> を変更することができる。<br />
+その場合、リモートデバイスとの間で <a href="5.1.9.html">データサイズ更新</a> を行わなければならない。<br />
+変更する値は、それぞれ <em>supportedMaxTxOctets</em>、<em>supportedMaxTxTime</em>、<em>supportedMaxRxOctets</em>、及び、<em>supportedMaxRxTime</em> を超えてはならない。  </p>
+<p><em>connMaxTxOctets</em>、<em>connMaxRxOctets</em>、<em>connMaxTxTime</em>、及び、<em>connMaxRxTime</em> の値は、実装上の制約を表す。<br />
+例えば、<em>connMaxRxOctets</em> は、受信側のデータバッファのサイズにセットでき、<em>connMaxTxTime</em> は、送信周波数が許可されている範囲外にズレないようにセットできる。<br />
+これらの値は <a href="#Table-4.6">Table 4.6</a> にのみ制約され、例えば、現在の値が新しい PHY における最大値よりも大きい場合、変更する必要はない。  </p>
+<p>コントローラは、<em>connEffectiveMaxTxOctets</em> よりも大きいサイズ、または、(CTE を除いて) <em>connEffectiveMaxTxTime</em> を超える送信時間を要するような LL データ PDU を含むパケットを送信してはならない。<br />
+ただし、これらの値が変更されている間は除く。<br />
+そのような期間中、コントローラは、古いパラメータは満たすが、新しいパラメータに違反するような LL データ PDU を送信キューにもっているかもしれない。<br />
+そのような PDU は有効である。<br />
+すなわち、<a href="5.1.9.html">データサイズ更新</a> 完了後にキューに詰められたパケットのみが、変更後のパラメータを満たすことを要求される。<br />
+しかし、コントローラは、<a href="2.4.2.21.html">LL_LENGTH_REQ、または、LL_LENGTH_RSP</a> を送信するとき、LL データ PDU がキューに詰められないよう保証するべきである。  </p>
+<div class="admonition note">
+<p>これらの要件は LL コントロール PDU には適用されない (<a href="4.5.11.html">4.5.11</a>)。</p>
+</div>
+<p>コントローラが <em>connMaxRxOctets</em> または <em>connMaxRxTime</em> を減らす場合、変更後の値を送信する <a href="5.1.9.html">データサイズ更新</a> が完了するまで、新しい値を適用してはならない。  </p>
+<p>コントローラは、<em>connEffectiveMaxTxOctets</em>、<em>connEffectiveMaxRxOctets</em>、<em>connEffectiveMaxTxTime</em>、または、<em>connEffectiveMaxRxTime</em> が変わったことをホストに通知しなければならない。  </p>
+<div class="admonition note">
+<p>これらのパラメータは、<a href="5.1.9.html">データサイズ更新</a>、<a href="5.1.10.html">PHY 更新</a>、<a href="5.1.1.html">コネクションアップデート</a>、及び、<a href="5.1.7.html">コネクションパラメータリクエスト</a> によって変更できる。</p>
+</div>
+<h2 id="_1">その他の関連ページ</h2>
+<ul>
+<li><a href="../../Vol4/PartE/7.8.33.html">LE Set Data Length コマンド</a></li>
+<li><a href="../../Vol4/PartE/7.8.34.html">LE Read Suggested Default Data Length コマンド</a></li>
+<li><a href="../../Vol4/PartE/7.8.35.html">LE Write Suggested Default Data Length コマンド</a></li>
+<li><a href="../../Vol4/PartE/7.7.65.7.html">LE Data Length Chenge イベント</a></li>
+</ul>
 
               
             </article>
@@ -36994,7 +37336,7 @@
     <script id="__config" type="application/json">{"base": "../../../..", "features": [], "search": "../../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.748e2769.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.c2e1ee47.min.js"></script>
       
     
   </body>

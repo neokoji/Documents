@@ -9,18 +9,18 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.11">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-8.2.14">
     
     
       
-        <title>7.8.97 LE Set CIG Parameters command - 書庫</title>
+        <title>7.8.97 LE Set CIG Parameters コマンド - 書庫</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.8c5ef100.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.3de6f41f.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.9647289d.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.cc9b2e1e.min.css">
         
       
     
@@ -91,7 +91,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              7.8.97 LE Set CIG Parameters command
+              7.8.97 LE Set CIG Parameters コマンド
             
           </span>
         </div>
@@ -28580,6 +28580,20 @@
   
   
     <li class="md-nav__item">
+      <a href="7.7.65.7.html" class="md-nav__link">
+        7.7.65 LE Data Length Change イベント
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="7.7.65.html" class="md-nav__link">
         7.7.65 LE Meta event
       </a>
@@ -30506,7 +30520,7 @@
       
       
       <a href="7.8.97.html" class="md-nav__link md-nav__link--active">
-        7.8.97 LE Set CIG Parameters command
+        7.8.97 LE Set CIG Parameters コマンド
       </a>
       
     </li>
@@ -31823,6 +31837,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../Vol6/PartB/2.4.2.21.html" class="md-nav__link">
+        2.4.2.21 LL_LENGTH_REQ と LL_LENGTH_RSP
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../Vol6/PartB/2.4.2.27.html" class="md-nav__link">
         2.4.2.27 LL_PERIODIC_SYNC_IND
       </a>
@@ -32524,7 +32552,7 @@
   
     <li class="md-nav__item">
       <a href="../../Vol6/PartB/4.5.10.html" class="md-nav__link">
-        4.5.10 Data PDU length management
+        4.5.10 データ PDU のサイズの管理
       </a>
     </li>
   
@@ -32567,6 +32595,20 @@
     <li class="md-nav__item">
       <a href="../../Vol6/PartB/4.5.13.html" class="md-nav__link">
         4.5.13 Connected Isochronous Stream (CIS)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Vol6/PartB/4.5.14.2.html" class="md-nav__link">
+        4.5.14.2 Arrangement of Multiple CISes
       </a>
     </li>
   
@@ -36973,9 +37015,510 @@
                 
 
 
-  <h1>7.8.97 LE Set CIG Parameters command</h1>
+  <h1>7.8.97 LE Set CIG Parameters コマンド</h1>
 
-
+<p>このコマンドは、CIG を生成し、コントローラ内の CIG と関連付けられた 1 つ以上の CIS にパラーメータをセットするために、セントラルのホストが使用する。  </p>
+<h2 id="_1">コマンドパラメータ</h2>
+<dl>
+<dt>CIG_ID (1 octet)</dt>
+<dd>
+<p>CIG を識別する。<br />
+セントラルのホストが割り当て、CIS の生成処理中にリンクレイヤを介してペリフェラルのホストに渡される。<br />
+該当する CIG_ID が存在しない場合、コントローラは新しい CIG を生成する。<br />
+一度 CIG が生成されて以降は、CIG_ID で指定される CIG 内の CIS 設定を修正、または、追加し、CIG に適用される全てのパラメータを更新する。  </p>
+<table>
+<thead>
+<tr>
+<th>値</th>
+<th>定義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x00 ~ 0xEF</td>
+<td>有効な値の範囲。</td>
+</tr>
+<tr>
+<td>その他</td>
+<td>RFU。</td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt>SDU_Interval_C_To_P (3 octets)</dt>
+<dd>
+<p>対象の CIG の全ての CIS について、セントラルが送信する連続する 2 つの SDU の開始時刻間のインターバル (ms)。<br />
+ペリフェラルからセントラル方向の CIS では、このパラメータを無視する。  </p>
+<table>
+<thead>
+<tr>
+<th>値</th>
+<th>定義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x0000FF ~ 0x0FFFFF</td>
+<td>有効な値の範囲。</td>
+</tr>
+<tr>
+<td>その他</td>
+<td>RFU。</td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt>SDU_Interval_P_To_C (3 octets)</dt>
+<dd>
+<p>対象の CIG の全ての CIS について、ペリフェラルが送信する連続する 2 つの SDU の開始時刻間のインターバル。<br />
+セントラルからペリフェラル方向の CIS では、このパラメータを無視する。  </p>
+<table>
+<thead>
+<tr>
+<th>値</th>
+<th>定義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x0000FF ~ 0x0FFFFF</td>
+<td>有効な値の範囲。</td>
+</tr>
+<tr>
+<td>その他</td>
+<td>RFU。</td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt>Worst_Case_SCA (1 octet)</dt>
+<dd>
+<p>CIG に参加するすべてのペリフェラルの中の最も悪いスリープクロック精度。<br />
+ホストは、このコマンドを発行する前に、全てのペリフェラルからスリープクロック精度を取得しておくべきである。<br />
+ホストが、全てのペリフェラルからスリープクロック精度を事前に入手できない場合、このパラメータを 0 にセットしなければならない。  </p>
+<table>
+<thead>
+<tr>
+<th>値</th>
+<th>定義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x00</td>
+<td>251 ~ 500 ppm</td>
+</tr>
+<tr>
+<td>0x01</td>
+<td>151 ~ 250 ppm</td>
+</tr>
+<tr>
+<td>0x02</td>
+<td>101 ~ 150 ppm</td>
+</tr>
+<tr>
+<td>0x03</td>
+<td>76 ~ 100 ppm</td>
+</tr>
+<tr>
+<td>0x04</td>
+<td>51 ~ 75 ppm</td>
+</tr>
+<tr>
+<td>0x05</td>
+<td>31 ~ 50 ppm</td>
+</tr>
+<tr>
+<td>0x06</td>
+<td>21 ~ 30 ppm</td>
+</tr>
+<tr>
+<td>0x07</td>
+<td>0 ~ 20 ppm</td>
+</tr>
+<tr>
+<td>Others</td>
+<td>RFU。</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p>Worst_Case_SCA は、対象の CIG の CIS のスケジューリングの際に、クロックのズレについて、リンクレイヤがよりよく許容できるようにするために使用される。<br />
+例えば、ある CIS が 2 つ以上のサブイベントを含んでいる場合、セントラルは、ペリフェラルのクロックの最悪のズレが、2 x Sub_Interval を超えないように、サブイベントのタイミングをセットすることができる。<br />
+これにより、ペリフェラルが、誤ったサブイベントのタイミングに同期してしまうことを防ぐ (隣接するサブイベントは、同じチャンネル上ではない)。  </p>
+</div>
+</dd>
+<dt>Packing (1 octet)</dt>
+<dd>
+<p>複数の CIS のサブイベントの配置の好ましい手法。<br />
+サブイベントは、シーケンシャルな配置、または、インタリーブな配置で配置される (<a href="../../Vol6/PartB/4.5.14.2.html">Vol.6, Part B, 4.5.14.2</a> 参照)。<br />
+このパラメータは、コントローラに対する推奨値であって、コントローラによって無視されるかもしれない。<br />
+対象の CIG に CIS が 1 つしか存在しない場合、このパラーメータは無視される。  </p>
+<table>
+<thead>
+<tr>
+<th>値</th>
+<th>定義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x00</td>
+<td>シーケンシャル</td>
+</tr>
+<tr>
+<td>0x01</td>
+<td>インタリーブ</td>
+</tr>
+<tr>
+<td>Others</td>
+<td>RFU。</td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt>Framing (1 octet)</dt>
+<dd>
+<p>指定された CIS の CIS データ PDU のフォーマット。<br />
+1 がセットされている場合、指定された CIS の CIS データ PDU は、フレームデータでなければならない。<br />
+0 がセットされている場合、指定された CIS の CIS データ PDU は、アンフレームデータ、または、フレームデータのいずれかである (各 CIS ごとに決定される。<a href="../../Vol6/PartG/1.html">Vol.6, Part G, 1</a> 参照。)。  </p>
+<table>
+<thead>
+<tr>
+<th>値</th>
+<th>定義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x00</td>
+<td>アンフレームデータ</td>
+</tr>
+<tr>
+<td>0x01</td>
+<td>フレームデータ</td>
+</tr>
+<tr>
+<td>Others</td>
+<td>RFU。</td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt>Max_Transport_Latency_C_To_P (2 octets)</dt>
+<dd>
+<p><a href="../../Vol6/PartG/3.2.1.html">Vol.6, Part G, 3.2.1</a>、及び、<a href="../../Vol6/PartG/3.2.2.html">Vol.6, Part G, 3.2.2</a> で定義される、セントラルからペリフェラル方向の伝送時間の最大遅延時間 (ms)。<br />
+ペリフェラルからセントラル方向の CIS については、このパラーメータは無視される。  </p>
+<table>
+<thead>
+<tr>
+<th>値</th>
+<th>定義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x0005 ~ 0x0FA0</td>
+<td>有効な値の範囲。</td>
+</tr>
+<tr>
+<td>Others</td>
+<td>RFU。</td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt>Max_Transport_Latency_P_To_C (2 octets)</dt>
+<dd>
+<p><a href="../../Vol6/PartG/3.2.1.html">Vol.6, Part G, 3.2.1</a>、及び、<a href="../../Vol6/PartG/3.2.2.html">Vol.6, Part G, 3.2.2</a> で定義される、ペリフェラルからセントラル方向の伝送時間の最大遅延時間 (ms)。<br />
+セントラルからペリフェラル方向の CIS については、このパラーメータは無視される。  </p>
+<table>
+<thead>
+<tr>
+<th>値</th>
+<th>定義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x0005 ~ 0x0FA0</td>
+<td>有効な値の範囲。</td>
+</tr>
+<tr>
+<td>Others</td>
+<td>RFU。</td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt>CIS_Count (1 octet)</dt>
+<dd>
+<p>このコマンドによって修正、または、追加される CIS 設定の数。<br />
+コントローラは、返り値の CIS_Count に同じ値をセットする。  </p>
+<table>
+<thead>
+<tr>
+<th>値</th>
+<th>定義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x00 ~ 0x1F</td>
+<td>有効な値の範囲。</td>
+</tr>
+<tr>
+<td>Others</td>
+<td>RFU。</td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt>CIS_ID[i] (CIS_Count x 1 octets)</dt>
+<dd>
+<p>CIS の識別子。<br />
+ホストがセットし、CIS の確立処理中に、リンクレイヤを介してペリフェラルに渡される。<br />
+CIS が存在する場合、CIS を指す。<br />
+CIG は存在するが、CIS_ID を持つ CIS が存在しない場合、CIG 内の CIS 設定を指す。  </p>
+<table>
+<thead>
+<tr>
+<th>値</th>
+<th>定義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x00 ~ 0xEF</td>
+<td>有効な値の範囲。</td>
+</tr>
+<tr>
+<td>Others</td>
+<td>RFU。</td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt>Max_SDU_C_To_P[i] (CIS_Count x 2 octets)</dt>
+<dd>
+<p>セントラルのホストからの SDU の最大サイズ。<br />
+ペリフェラルからセントラル方向の CIS である場合、このパラメータは 0 にセットしなければならない。<br />
+修正されている CIS の設定が、セントラルからペリフェラル方向のデータパスを持っており、ホストがこのパラメータに 0 を指定している場合、コントローラは <a href="../../Vol1/PartF/2.12.html"><em>Command Disallowed (0x0C)</em></a> のエラーコードを返す。  </p>
+<table>
+<thead>
+<tr>
+<th>値</th>
+<th>定義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x0000 ~ 0x0FFF</td>
+<td>有効な値の範囲。</td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt>Max_SDP_P_To_C[i] (CIS_Count x 2 octets)</dt>
+<dd>
+<p>ペリフェラルのホストからの SDU の最大サイズ。<br />
+セントラルからペリフェラル方向の CIS である場合、このパラメータは 0 にセットしなければならない。<br />
+修正されている CIS の設定が、ペリフェラルからセントラル方向のデータパスを持っており、ホストがこのパラメータに 0 を指定している場合、コントローラは <a href="../../Vol1/PartF/2.12.html"><em>Command Disallowed (0x0C)</em></a> のエラーコードを返す。  </p>
+<table>
+<thead>
+<tr>
+<th>値</th>
+<th>定義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x0000 ~ 0x0FFF</td>
+<td>有効な値の範囲。</td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt>PHY_C_To_P[i] (CIS_Count x 1 octets)</dt>
+<dd>
+<p>セントラルからペリフェラル方向の送信において使用する PHY。<br />
+ホストは、少なくとも 1 つのビットをセットしなければならず、コントローラはセットされているビットのうちから 1 つを選択する。  </p>
+<table>
+<thead>
+<tr>
+<th>ビット位置</th>
+<th>定義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>LE 1M</td>
+</tr>
+<tr>
+<td>1</td>
+<td>LE 2M</td>
+</tr>
+<tr>
+<td>2</td>
+<td>LE Coded</td>
+</tr>
+<tr>
+<td>0</td>
+<td>RFU。</td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt>PHY_P_To_C[i] (CIS_Count x 1 octets)</dt>
+<dd>
+<p>ペリフェラルからセントラル方向の送信において使用する PHY。<br />
+ホストは、少なくとも 1 つのビットをセットしなければならず、コントローラはセットされているビットのうちから 1 つを選択する。  </p>
+<table>
+<thead>
+<tr>
+<th>ビット位置</th>
+<th>定義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>LE 1M</td>
+</tr>
+<tr>
+<td>1</td>
+<td>LE 2M</td>
+</tr>
+<tr>
+<td>2</td>
+<td>LE Coded</td>
+</tr>
+<tr>
+<td>0</td>
+<td>RFU。</td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt>RTN_C_To_P[i] (ReTransmission Number, CIS_Count x 1 octets)</dt>
+<dd>セントラルからペリフェラル方向の CIS データ PDU について、ACK が返される、もしくは、フラッシュされるまでに再送するべき回数 (その再送が、どのアイソクロナスイベントで発生するかは問わない)。<br />
+対象の CIS が、ペリフェラルからセントラル方向である場合、このパラメータは無視される。<br />
+このパラメータは、コントローラへの推奨値であり、コントローラによって無視されるかもしれない。  </dd>
+<dt>RTN_P_To_C[i] (ReTransmission Number, CIS_Count x 1 octets)</dt>
+<dd>ペリフェラルからセントラル方向の CIS データ PDU について、ACK が返される、もしくは、フラッシュされるまでに再送するべき回数 (その再送が、どのアイソクロナスイベントで発生するかは問わない)。<br />
+対象の CIS が、セントラルからペリフェラル方向である場合、このパラメータは無視される。<br />
+このパラメータは、コントローラへの推奨値であり、コントローラによって無視されるかもしれない。  </dd>
+</dl>
+<h2 id="_2">返り値</h2>
+<dl>
+<dt>Status (1 octet)</dt>
+<dd>
+<p><a href="../../Vol1/PartF/1.html">コマンドの成否</a>。<br />
+非 0 である場合、このコマンドによって CIG の状態、及び、その CIS 設定は変化しない。<br />
+CIG が存在しない場合は、新規に生成されない。  </p>
+<p>0 である場合、コマンドパラメータ CIS_ID[i] で指定された CIS 設定に対応するコネクションハンドルを、同じ順番で Connection_Handle[i] にセットする。<br />
+同じ CIS_ID が設定されている場合は、同じコネクションハンドルを返す。  </p>
+<ul>
+<li>
+<p><a href="../../Vol1/PartF/2.7.html"><em>Memory Capacity Exceeded (0x07)</em></a></p>
+<ul>
+<li>コントローラがサポートする最大のリソースを超えて CIG を生成したり、パラメータを設定しようとしたりした場合。</li>
+</ul>
+</li>
+<li>
+<p><a href="../../Vol1/PartF/2.9.html"><em>Connection Limit Exceeded (0x09)</em></a></p>
+<ul>
+<li>コントローラがサポートするコネクションの最大数を超えて CIS パラメータを設定しようとした場合。</li>
+</ul>
+</li>
+<li>
+<p><a href="../../Vol1/PartF/2.12.html"><em>Command Disallowed (0x0C)</em></a></p>
+<ul>
+<li>コマンドパラメータ Max_SDU_C_To_P、及び、Max_SDP_P_To_C 参照。</li>
+<li>対象の CIG が設定ステートでない場合。</li>
+</ul>
+</li>
+<li>
+<p><a href="../../Vol1/PartF/2.17.html"><em>Unspported Feature or Value (0x11)</em></a></p>
+<ul>
+<li>コントローラが非対称な PHY をサポートしておらず、かつ、コマンドパラメータ PHY_C_To_P[i] と PHY_P_To_C[i] に異なる値をセットした場合。  </li>
+<li>不正な CIS パラメータの組み合わせを指定した場合。</li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt>CIG_ID (1 octet)</dt>
+<dd>
+<p>対象の CIG。  </p>
+<table>
+<thead>
+<tr>
+<th>値</th>
+<th>定義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x00 ~ 0xEF</td>
+<td>有効な値の範囲。</td>
+</tr>
+<tr>
+<td>その他</td>
+<td>RFU。</td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt>CIS_Count (1 octet)</dt>
+<dd>
+<p>このコマンドを修正、または、加えられた CIS の総数。  </p>
+<table>
+<thead>
+<tr>
+<th>値</th>
+<th>定義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x00 ~ 0x1F</td>
+<td>有効な値の範囲。</td>
+</tr>
+<tr>
+<td>Others</td>
+<td>RFU。</td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt>Connection_Handle[i] (CIS_Count x 2 octets)</dt>
+<dd>
+<p>対象の CIG の CIS のコネクションハンドル。  </p>
+<table>
+<thead>
+<tr>
+<th>値</th>
+<th>定義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0x0000 ~ 0x0EFF</td>
+<td>有効な値の範囲。</td>
+</tr>
+<tr>
+<td>Others</td>
+<td>RFU。</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+<h2 id="_3">発生するイベント</h2>
+<ul>
+<li><a href="7.7.14.html">Command Complete</a></li>
+</ul>
 
               
             </article>
@@ -36994,7 +37537,7 @@
     <script id="__config" type="application/json">{"base": "../../../..", "features": [], "search": "../../../../assets/javascripts/workers/search.2a1c317c.min.js", "translations": {"clipboard.copied": "\u30b3\u30d4\u30fc\u3057\u307e\u3057\u305f", "clipboard.copy": "\u30af\u30ea\u30c3\u30d7\u30dc\u30fc\u30c9\u3078\u30b3\u30d4\u30fc", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\s\\-\u3000\u3001\u3002\uff0c\uff0e]+", "search.placeholder": "\u691c\u7d22", "search.result.more.one": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3082\u30461\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.more.other": "\u3053\u306e\u30da\u30fc\u30b8\u5185\u306b\u3042\u3068#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.none": "\u4f55\u3082\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f", "search.result.one": "1\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.other": "#\u4ef6\u898b\u3064\u304b\u308a\u307e\u3057\u305f", "search.result.placeholder": "\u691c\u7d22\u30ad\u30fc\u30ef\u30fc\u30c9\u3092\u5165\u529b\u3057\u3066\u304f\u3060\u3055\u3044", "search.result.term.missing": "\u691c\u7d22\u306b\u542b\u307e\u308c\u306a\u3044", "select.version.title": "Select version"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.748e2769.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.c2e1ee47.min.js"></script>
       
     
   </body>
