@@ -1,0 +1,106 @@
+<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="481px" height="282px" viewBox="-0.5 -0.5 481 282" content="&lt;mxfile&gt;&lt;diagram id=&quot;IzCmP3wzYfO5uOyOiyMJ&quot; name=&quot;ページ1&quot;&gt;7Vddb9owFP01kbaXynE+CI8Jpd1DJ1XjYdujm3iJpRAzxxTYr98NuU5iAi2l1bpJk6i499i+ts85tY3jzZbbW8VWxWeZ8dKhJNs63rVDqRu5EXw1yM4gE9IiuRIZYj2wEL84gqbbWmS8tjpqKUstVjaYyqriqbYwppTc2N1+yNKedcVyPgIWKSvH6FeR6aJFIzrp8U9c5IWZ2Q2nbcuSmc64k7pgmdwMIG/ueDMlpW6j5XbGy4Y9w0s77uZEa7cwxSt91oAgaIc8snKNu8OV6Z3ZLq+yuGENskpWACaFXpaQuRDCRGr3DRJyFZj0+7DtutGddNkOs/FKcfE8s8jHdd9yueQwHjpsesoDpLEYsG0wxUumxaMtGUPl865cN8O9FLASStCm1EPN0KS+T+wStVyrlOOoIcXjQlc0sGrRw1qaqZzrUS0IBjvvob2IpwQN/wt6VIcgeCNBodAfFJQe0XPuORF8JhhMyT6gTuxjkMBWSQx/+9x14jnEd3QW34+8oOS6yniGAm8KoflixdKmdQPHt+2Nkxo/cqX59kmVTWtILOq6fOCCDhvaICKnFbf4fYrMyaVkJn8lmX70jmS65mQZsLnQfAWIxxwaljBX8qAgypvIsGmC+BoZjwODUMNwbDoH2CeZGXm8XhXsDAUDJ75xkjki0yn2iZJeKTJrHwNCVpB84T/XvNavE5CpFN8mwZMH4OX/HJ1OAz07zYd6Hp4/F+kZRC+6OtKS1bVIzzT1s7fAa+9r36bOCy893sNnCr3lZT0dMf4iuzak3rEHeF97ieK1+MUe9k3kwKilyKtGMRCFKwAaRwp4z8bYsBRZ1gw8Jp9xBT6mcQane8Ke4e6zpT3bqkaTf9Kqhw7zyaVPS/+ZQm9o1dAdMX7nzG+ak3l63LL1SlY1H18EH+5BGVHlH9/Fzob7d7QzpP0vvFaL/oeyN/8N&lt;/diagram&gt;&lt;/mxfile&gt;">
+    <defs/>
+    <g>
+        <path d="M 79 280 L 79.25 80" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 399 280 L 399.25 80" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <rect x="0" y="0" width="160" height="80" rx="12" ry="12" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 158px; height: 1px; padding-top: 40px; margin-left: 1px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                デバイス A の L2CAP
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="80" y="44" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    デバイス A の L2CAP
+                </text>
+            </switch>
+        </g>
+        <rect x="320" y="0" width="160" height="80" rx="12" ry="12" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 158px; height: 1px; padding-top: 40px; margin-left: 321px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                デバイス B の L2CAP
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="400" y="44" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    デバイス B の L2CAP
+                </text>
+            </switch>
+        </g>
+        <rect x="0" y="120" width="480" height="40" rx="20" ry="20" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 478px; height: 1px; padding-top: 140px; margin-left: 1px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                Step 3a
+                                <br/>
+                                セキュアなサービスに対する L2CAP Connection Request
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="240" y="144" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    Step 3a...
+                </text>
+            </switch>
+        </g>
+        <path d="M 80 200 L 393.63 200" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 398.88 200 L 391.88 203.5 L 393.63 200 L 391.88 196.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 201px; margin-left: 241px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                L2CAP Connection Request
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="241" y="204" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px" text-anchor="middle">
+                    L2CAP Connection Request
+                </text>
+            </switch>
+        </g>
+        <path d="M 400 240 L 86.37 240" fill="none" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="stroke"/>
+        <path d="M 81.12 240 L 88.12 236.5 L 86.37 240 L 88.12 243.5 Z" fill="rgb(0, 0, 0)" stroke="rgb(0, 0, 0)" stroke-miterlimit="10" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 1px; height: 1px; padding-top: 241px; margin-left: 241px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 11px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; background-color: rgb(255, 255, 255); white-space: nowrap;">
+                                L２CAP Connection Response
+                                <br/>
+                                (Pending)
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="241" y="244" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="11px" text-anchor="middle">
+                    L２CAP Connection Response...
+                </text>
+            </switch>
+        </g>
+    </g>
+    <switch>
+        <g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"/>
+        <a transform="translate(0,-5)" xlink:href="https://www.diagrams.net/doc/faq/svg-export-text-problems" target="_blank">
+            <text text-anchor="middle" font-size="10px" x="50%" y="100%">
+                Viewer does not support full SVG 1.1
+            </text>
+        </a>
+    </switch>
+</svg>
