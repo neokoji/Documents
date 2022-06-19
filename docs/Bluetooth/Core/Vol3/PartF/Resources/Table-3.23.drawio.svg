@@ -1,0 +1,68 @@
+<svg host="65bd71144e" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="481px" height="81px" viewBox="-0.5 -0.5 481 81" content="&lt;mxfile&gt;&lt;diagram id=&quot;IzCmP3wzYfO5uOyOiyMJ&quot; name=&quot;ページ1&quot;&gt;xZXBjpswEIafZqTNoZIxCZAjELK9rPaQtD1WLDhg1WDkOJukT99xsEPYUHVVbVUpSsbf/PYw4xkCftqcHlXe1U+yZAIoKU/gr4BSz5uH+GPI2ZIoJD2pFC8tG8CG/2QWOtmBl2w/EmophebdGBaybVmhRyxXSh7Hsp0U46hdXrE7sClycU+/8VLXPY1oOPDPjFe1i+wFy97T5E5sM9nXeSmPN8jPwE+VlLq3mlPKhKmeq0u/b/0b7/XBFGv1uzZE/Y7XXBxscrHWir8cNEP83BV4e2g8kBNZz4AGAo9NXhRalbEevJlNRJ9ddZQ8tCUzAQgqjjXXbNPlhfEesSGQ1boRuPLQvH9gm8MrU5qdbpBN4JHJhml1RonzumLadpoTuz4Od+MFltU39zK3LLftUF2PHiqGhi3adAHp4q6AkFGICCSYG4EsgCiBOIVsAUkKcWiMCOECMh8iD+LMaJboJcYVr2AZOtf6YhBjG01gvIbg+bHVRKkTX8kcsiUs8UMGMSWy0ExfngjjY5AIsjkkK2O/vUCsux7f0l4r+YOlUkiFpJUtKpMdF+INygWvWlwKtjMnmDvkODaxxQ0vSxNksinGbfMv+mJx3xc+negL/wP6wp1x0xebS/2fd/j11dD9xDjhLvLJzFu83X5/2n6xS2/2/8eMRn8es8ly/sWY4XJ4B158N38lfvYL&lt;/diagram&gt;&lt;/mxfile&gt;">
+    <defs/>
+    <g>
+        <rect x="0" y="0" width="160" height="40" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 158px; height: 1px; padding-top: 20px; margin-left: 1px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                Attribute Opcode (0x0F)
+                                <br/>
+                                (1)
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="80" y="24" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    Attribute Opcode (0x0F)...
+                </text>
+            </switch>
+        </g>
+        <rect x="0" y="50" width="320" height="30" fill="none" stroke="none" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe flex-start; width: 318px; height: 1px; padding-top: 65px; margin-left: 2px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: left;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                ※ 括弧内の数字は、断りがない限り octet 単位
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="2" y="69" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px">
+                    ※ 括弧内の数字は、断りがない限り octet 単位
+                </text>
+            </switch>
+        </g>
+        <rect x="160" y="0" width="320" height="40" fill="rgb(255, 255, 255)" stroke="rgb(0, 0, 0)" pointer-events="all"/>
+        <g transform="translate(-0.5 -0.5)">
+            <switch>
+                <foreignObject pointer-events="none" width="100%" height="100%" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility" style="overflow: visible; text-align: left;">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="display: flex; align-items: unsafe center; justify-content: unsafe center; width: 318px; height: 1px; padding-top: 20px; margin-left: 161px;">
+                        <div data-drawio-colors="color: rgb(0, 0, 0); " style="box-sizing: border-box; font-size: 0px; text-align: center;">
+                            <div style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.2; pointer-events: all; white-space: normal; overflow-wrap: normal;">
+                                Set Of Values
+                                <br/>
+                                (0 - (ATT_MTU - 1))
+                            </div>
+                        </div>
+                    </div>
+                </foreignObject>
+                <text x="320" y="24" fill="rgb(0, 0, 0)" font-family="Helvetica" font-size="12px" text-anchor="middle">
+                    Set Of Values...
+                </text>
+            </switch>
+        </g>
+    </g>
+    <switch>
+        <g requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"/>
+        <a transform="translate(0,-5)" xlink:href="https://www.diagrams.net/doc/faq/svg-export-text-problems" target="_blank">
+            <text text-anchor="middle" font-size="10px" x="50%" y="100%">
+                Viewer does not support full SVG 1.1
+            </text>
+        </a>
+    </switch>
+</svg>
